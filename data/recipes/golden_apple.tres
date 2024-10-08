@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://cgganxf3t0mlt"]
+
+[ext_resource type="Script" path="res://models/item.gd" id="1_755g7"]
+[ext_resource type="Script" path="res://models/recipe.gd" id="2_8pd52"]
+[ext_resource type="Resource" uid="uid://ry7mjxs2fb0v" path="res://data/items/apple.tres" id="2_bogvt"]
+[ext_resource type="Resource" uid="uid://ucvyblbru0lj" path="res://data/items/golden_apple.tres" id="3_xhlyu"]
+
+[resource]
+script = ExtResource("2_8pd52")
+name = "Golden Apple"
+ingredients = Array[ExtResource("1_755g7")]([ExtResource("2_bogvt"), ExtResource("2_bogvt"), ExtResource("2_bogvt")])
+results = Array[ExtResource("1_755g7")]([ExtResource("3_xhlyu")])

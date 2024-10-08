@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ConsumbaleItem" load_steps=3 format=3 uid="uid://ry7mjxs2fb0v"]
+
+[ext_resource type="Script" path="res://models/consumable.gd" id="1_agqxc"]
+[ext_resource type="Texture2D" uid="uid://lt14ki8lsasv" path="res://sprites/consumables/Apple.png" id="1_slivf"]
+
+[resource]
+script = ExtResource("1_agqxc")
+health_restore = 10
+name = "Apple"
+icon = ExtResource("1_slivf")
+price = 5
+quantity = 1
+stack_size = 99
+hover_text = "A delicious apple that will restore {} life points."
+description = "The most beautiful apple that you ever seen. It may have falled from the elder tree."

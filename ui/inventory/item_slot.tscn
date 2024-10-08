@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://betkc2x1ow84"]
+
+[ext_resource type="Script" path="res://ui/inventory/item_slot.gd" id="1_dnlht"]
+[ext_resource type="FontFile" uid="uid://gm1u7102clwl" path="res://fonts/Inconsolata-Black.ttf" id="2_uhmy7"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pdnbo"]
+load_path = "res://.godot/imported/Apple.png-9e7c8578a2476197028403bb1bf965af.ctex"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y3cfn"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 4.0
+content_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_odhmc"]
+line_spacing = 5.0
+font = ExtResource("2_uhmy7")
+font_size = 32
+
+[node name="ItemSlot" type="PanelContainer"]
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_default_cursor_shape = 2
+script = ExtResource("1_dnlht")
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_pdnbo")
+
+[node name="QuantityLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_y3cfn")
+text = "1"
+label_settings = SubResource("LabelSettings_odhmc")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="ItemTexture" to="." method="_on_item_texture_mouse_entered"]

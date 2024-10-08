@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://odthc1bdo327"]
+
+[ext_resource type="Script" path="res://ui/crafting/crafting_dialog.gd" id="1_e0b1p"]
+[ext_resource type="PackedScene" uid="uid://coc2u8t0cwcx6" path="res://ui/item_grid/item_grid.tscn" id="2_8jpwi"]
+[ext_resource type="PackedScene" uid="uid://betkc2x1ow84" path="res://ui/inventory/item_slot.tscn" id="2_wc8he"]
+
+[node name="CraftingDialog" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e0b1p")
+slot_scene = ExtResource("2_wc8he")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Crafting"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="VBoxContainer/Header"]
+layout_mode = 2
+text = "x"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ListContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/ListContainer"]
+layout_mode = 2
+text = "Recipes"
+
+[node name="RecipesList" type="ItemList" parent="VBoxContainer/HBoxContainer2/ListContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 2
+item_0/text = "First Recipe"
+item_1/text = "Second Recipe"
+
+[node name="RecipesContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="IngredientsLabel" type="Label" parent="VBoxContainer/HBoxContainer2/RecipesContainer"]
+layout_mode = 2
+text = "Ingredients"
+
+[node name="IngredientsContainer" parent="VBoxContainer/HBoxContainer2/RecipesContainer" instance=ExtResource("2_8jpwi")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ResultsLabel" type="Label" parent="VBoxContainer/HBoxContainer2/RecipesContainer"]
+layout_mode = 2
+text = "Results"
+
+[node name="ResultsContainer" parent="VBoxContainer/HBoxContainer2/RecipesContainer" instance=ExtResource("2_8jpwi")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer2/RecipesContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CraftButton" type="Button" parent="VBoxContainer/HBoxContainer2/RecipesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "Craft"
+
+[connection signal="pressed" from="VBoxContainer/Header/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer2/ListContainer/RecipesList" to="." method="_on_recipes_list_item_selected"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/RecipesContainer/CraftButton" to="." method="_on_craft_button_pressed"]

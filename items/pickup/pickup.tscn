@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://7bd3r08f21af"]
+
+[ext_resource type="Script" path="res://items/pickup/pickup.gd" id="1_7kxep"]
+[ext_resource type="Resource" uid="uid://ry7mjxs2fb0v" path="res://data/items/apple.tres" id="2_gpio0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uqxw5"]
+radius = 32.0
+
+[node name="Pickup" type="Area2D"]
+script = ExtResource("1_7kxep")
+item = ExtResource("2_gpio0")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_uqxw5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

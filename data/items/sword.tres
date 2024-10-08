@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponItem" load_steps=4 format=3 uid="uid://d0gapfqeovf3t"]
+
+[ext_resource type="Texture2D" uid="uid://cngogl241rx1b" path="res://sprites/equipables/Sword.png" id="1_30v04"]
+[ext_resource type="PackedScene" uid="uid://c65hdv7povwa" path="res://items/weapons/sword.tscn" id="1_paako"]
+[ext_resource type="Script" path="res://models/weapon.gd" id="3_l3pi5"]
+
+[resource]
+script = ExtResource("3_l3pi5")
+attack = 15.0
+durability = 100.0
+name = "Sword"
+scene = ExtResource("1_paako")
+icon = ExtResource("1_30v04")
+price = 110
+quantity = 1
+stack_size = 99
+hover_text = ""
+description = ""

@@ -1,0 +1,319 @@
+[gd_scene load_steps=19 format=3 uid="uid://b32si1ifgr5oc"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_iel22"]
+[ext_resource type="Texture2D" uid="uid://qew0d08gbfur" path="res://sprites/skeletoon/skeletoon.png" id="2_tnyww"]
+[ext_resource type="Texture2D" uid="uid://ble2oxicdy83d" path="res://sprites/skeletoon/skeletoon_right_arm.png" id="3_c2oc6"]
+[ext_resource type="Texture2D" uid="uid://dba0a838y461p" path="res://sprites/weapons/Sword_slash_1.png" id="3_s7lab"]
+[ext_resource type="Texture2D" uid="uid://cqre400w3041u" path="res://sprites/weapons/Sword_slash_2.png" id="4_g75qj"]
+[ext_resource type="Script" path="res://player/fsm.gd" id="7_i4pxy"]
+[ext_resource type="Script" path="res://player/idle.gd" id="8_3q3st"]
+[ext_resource type="Script" path="res://player/falling.gd" id="8_mekc0"]
+[ext_resource type="Script" path="res://player/attack.gd" id="8_uk1a0"]
+[ext_resource type="Script" path="res://player/jumping.gd" id="9_2k4ew"]
+[ext_resource type="Script" path="res://player/walking.gd" id="9_13rxe"]
+[ext_resource type="PackedScene" uid="uid://c80kr2ntehr8s" path="res://weapons/sword.tscn" id="16_q1r1h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xith"]
+size = Vector2(26, 55)
+
+[sub_resource type="Animation" id="Animation_cxnkk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeletoon/SwordSlash1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeletoon/SwordSlash2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kvxmc"]
+resource_name = "attack_sword_1"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeletoon/SkeletoonSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 18, 19, 20]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeletoon/SkeletoonRightArm:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 18, 19, 20]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeletoon/Weapon:position")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-6, -2), Vector2(-4, -2), Vector2(0, -2), Vector2(-7, -3), Vector2(1, -10), Vector2(17, 4)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeletoon/Weapon:rotation")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.122041, -2.2169, -0.927833, 0.773245]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeletoon/Weapon:collision_mask")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 4]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeletoon/SwordSlash1:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Skeletoon/SwordSlash2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_cdtup"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeletoon/Weapon:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.333333, 0.466667, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-6, -1), Vector2(0, 1), Vector2(-3, 1), Vector2(0, 0), Vector2(-4, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeletoon/SkeletoonSprite:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667, 0.733333, 0.8, 0.866667, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeletoon/SkeletoonRightArm:frame")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667, 0.733333, 0.8, 0.866667, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeletoon/Weapon:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_y3ggl"]
+resource_name = "walk"
+length = 0.7
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeletoon/SkeletoonSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 33, 34, 35, 36]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeletoon/SkeletoonRightArm:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 33, 34, 35, 36]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeletoon/Weapon:position")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-14, 22), Vector2(-14, 24), Vector2(-14, 22)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeletoon/Weapon:rotation")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.71487]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iabqe"]
+_data = {
+"RESET": SubResource("Animation_cxnkk"),
+"attack_sword_1": SubResource("Animation_kvxmc"),
+"idle": SubResource("Animation_cdtup"),
+"walk": SubResource("Animation_y3ggl")
+}
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_iel22")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_1xith")
+
+[node name="Skeletoon" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="SkeletoonSprite" type="Sprite2D" parent="Skeletoon"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_tnyww")
+hframes = 15
+vframes = 3
+frame = 15
+
+[node name="SwordSlash1" type="Sprite2D" parent="Skeletoon"]
+visible = false
+modulate = Color(0.294118, 0.788235, 0.827451, 0.631373)
+texture_filter = 1
+position = Vector2(-1, -19)
+rotation = -0.399271
+scale = Vector2(0.761007, 0.822846)
+texture = ExtResource("3_s7lab")
+
+[node name="SwordSlash2" type="Sprite2D" parent="Skeletoon"]
+visible = false
+modulate = Color(0.505882, 0.92549, 0.921569, 0.627451)
+position = Vector2(24, -9.53674e-07)
+rotation = 1.27153
+scale = Vector2(0.868199, 0.868199)
+texture = ExtResource("4_g75qj")
+
+[node name="Weapon" parent="Skeletoon" instance=ExtResource("16_q1r1h")]
+position = Vector2(-6, -2)
+collision_layer = 0
+collision_mask = 0
+
+[node name="SkeletoonRightArm" type="Sprite2D" parent="Skeletoon"]
+scale = Vector2(2, 2)
+texture = ExtResource("3_c2oc6")
+hframes = 15
+vframes = 3
+frame = 15
+
+[node name="PlayerAnimations" type="AnimationPlayer" parent="Skeletoon"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_iabqe")
+}
+
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("7_i4pxy")
+initial_state = NodePath("Idle")
+
+[node name="Attack" type="Node" parent="FSM"]
+script = ExtResource("8_uk1a0")
+
+[node name="Falling" type="Node" parent="FSM"]
+script = ExtResource("8_mekc0")
+
+[node name="Idle" type="Node" parent="FSM"]
+script = ExtResource("8_3q3st")
+
+[node name="Jumping" type="Node" parent="FSM"]
+script = ExtResource("9_2k4ew")
+
+[node name="Walking" type="Node" parent="FSM"]
+script = ExtResource("9_13rxe")

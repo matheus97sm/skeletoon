@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2nh4w3u6p2mp"]
+
+[ext_resource type="Script" path="res://ui/player/player_interface.gd" id="1_3supn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eq5h3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lb53t"]
+bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bchor"]
+bg_color = Color(0.964706, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="PlayerInterface" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_eq5h3")
+script = ExtResource("1_3supn")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 29.0
+offset_top = 24.0
+offset_right = 360.0
+offset_bottom = 43.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lb53t")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bchor")
+value = 20.0
+show_percentage = false
