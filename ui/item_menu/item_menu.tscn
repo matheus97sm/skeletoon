@@ -41,8 +41,6 @@ custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_vertical = 3
 auto_height = true
-item_count = 2
-item_0/text = "Use"
-item_1/text = "Discard"
 
 [connection signal="button_up" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_button_up"]
+[connection signal="item_clicked" from="PanelContainer/MarginContainer/VBoxContainer/ItemList" to="." method="_on_item_list_item_clicked"]

@@ -64,12 +64,14 @@ position = Vector2(163, -12)
 [node name="Apple4" parent="PickupItems" instance=ExtResource("3_08ycd")]
 position = Vector2(-127, -64)
 
+[node name="PlayerUI" type="CanvasLayer" parent="."]
+
+[node name="PlayerInterface" parent="PlayerUI" instance=ExtResource("7_w6jvi")]
+unique_name_in_owner = true
+
 [node name="UIRoot" type="CanvasLayer" parent="."]
 script = ExtResource("5_flf46")
 all_recipes = ExtResource("6_pv31d")
-
-[node name="PlayerInterface" parent="UIRoot" instance=ExtResource("7_w6jvi")]
-unique_name_in_owner = true
 
 [node name="CraftingDialog" parent="UIRoot" instance=ExtResource("6_eepai")]
 unique_name_in_owner = true
@@ -99,27 +101,29 @@ offset_bottom = 17.5
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Enemy" type="CharacterBody2D" parent="."]
 light_mask = 4
 visibility_layer = 4
 position = Vector2(162, 38)
 script = ExtResource("10_qawds")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 texture = ExtResource("10_6ntxu")
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+[node name="HurtBox" type="Area2D" parent="Enemy"]
+light_mask = 0
+visibility_layer = 4
+collision_layer = 0
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
-light_mask = 4
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/HurtBox"]
+light_mask = 0
 visibility_layer = 4
 shape = SubResource("CircleShape2D_fk787")
 debug_color = Color(0.992328, 0, 0.253559, 0.42)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-light_mask = 4
-visibility_layer = 4
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 shape = SubResource("CircleShape2D_gb83h")
 
-[connection signal="update_health" from="Player" to="UIRoot" method="_on_player_update_health"]
-[connection signal="body_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
+[connection signal="update_health" from="Player" to="PlayerUI/PlayerInterface" method="_on_player_update_health"]
+[connection signal="body_entered" from="Enemy/HurtBox" to="Enemy" method="_on_area_2d_body_entered"]

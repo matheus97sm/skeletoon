@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="ConsumbaleItem" load_steps=3 format=3 uid="uid://ry7mjxs2fb0v"]
+[gd_resource type="Resource" script_class="ConsumbaleItem" load_steps=4 format=3 uid="uid://ry7mjxs2fb0v"]
 
 [ext_resource type="Script" path="res://models/consumable.gd" id="1_agqxc"]
-[ext_resource type="Texture2D" uid="uid://lt14ki8lsasv" path="res://sprites/consumables/Apple.png" id="1_slivf"]
+[ext_resource type="Texture2D" uid="uid://lt14ki8lsasv" path="res://sprites/consumables/Apple.png" id="1_fv62h"]
+[ext_resource type="Script" path="res://signals/signal_bus.gd" id="3_52bsr"]
 
 [resource]
 script = ExtResource("1_agqxc")
 health_restore = 10
+signal_bus = ExtResource("3_52bsr")
 name = "Apple"
-icon = ExtResource("1_slivf")
+icon = ExtResource("1_fv62h")
 price = 5
-quantity = 1
-stack_size = 99
+quantity = null
+stack_size = null
 hover_text = "A delicious apple that will restore {} life points."
 description = "The most beautiful apple that you ever seen. It may have falled from the elder tree."

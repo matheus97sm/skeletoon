@@ -1,12 +1,15 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://ucvyblbru0lj"]
+[gd_resource type="Resource" script_class="ConsumbaleItem" load_steps=3 format=3 uid="uid://ucvyblbru0lj"]
 
-[ext_resource type="Script" path="res://models/item.gd" id="1_1uc8k"]
-[ext_resource type="Texture2D" uid="uid://ggin332s2ako" path="res://sprites/consumables/GoldenApple.png" id="1_nuf2n"]
-[ext_resource type="PackedScene" uid="uid://btuhp38oi3y2b" path="res://items/consumables/golden_apple.tscn" id="2_utxcf"]
+[ext_resource type="Texture2D" uid="uid://ggin332s2ako" path="res://sprites/consumables/GoldenApple.png" id="1_kto1o"]
+[ext_resource type="Script" path="res://models/consumable.gd" id="2_7sc6h"]
 
 [resource]
-script = ExtResource("1_1uc8k")
+script = ExtResource("2_7sc6h")
+health_restore = 50
 name = "Golden Apple"
-scene = ExtResource("2_utxcf")
-icon = ExtResource("1_nuf2n")
+icon = ExtResource("1_kto1o")
 price = 22
+quantity = 1
+stack_size = 99
+hover_text = ""
+description = ""

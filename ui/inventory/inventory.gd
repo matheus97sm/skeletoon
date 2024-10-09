@@ -8,10 +8,13 @@ func add_item(item: Item) -> void:
 	for _item in _content:
 		if _item.name == item.name:
 			_item.quantity += item.quantity
+			SignalBus.inventory_updated.emit()
 			return
 	
 	var new_item = item.duplicate()
 	_content.append(new_item)
+	
+	SignalBus.inventory_updated.emit()
 
 
 func remove_item(item: Item, quantity: int = 1) -> void:
@@ -21,11 +24,17 @@ func remove_item(item: Item, quantity: int = 1) -> void:
 			
 			if _item.quantity == 0:
 				_content.erase(_item)
-		
+	
+	SignalBus.inventory_updated.emit()
 
 
 func get_items() -> Array[Item]:
 	return _content
+
+
+func get_item_by_name(item_name: String) -> Item:
+	var item_index = _content.find(func(item): return item.name == item_name)
+	return _content[item_index]
 
 
 func has_all(items: Array[Item]) -> bool:

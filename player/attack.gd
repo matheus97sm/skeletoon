@@ -5,7 +5,6 @@ func enter():
 
 
 func update(delta: float):
-	print(player.player_animations.current_animation)
 	if player.player_animations.current_animation == "attack_sword_1":
 		return
 	

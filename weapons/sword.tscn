@@ -8,6 +8,7 @@ radius = 4.30533
 height = 30.4149
 
 [node name="Sword" type="Area2D"]
+collision_mask = 4
 script = ExtResource("1_6nxyf")
 
 [node name="SwordTexture" type="Sprite2D" parent="."]
