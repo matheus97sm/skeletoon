@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dqpgqgqof2qwm"]
+[gd_scene load_steps=15 format=4 uid="uid://dqpgqgqof2qwm"]
 
 [ext_resource type="PackedScene" uid="uid://b32si1ifgr5oc" path="res://player/player.tscn" id="1_wd3il"]
 [ext_resource type="Texture2D" uid="uid://ducq76m6fs42m" path="res://tilemap/tilemap.png" id="2_s4n8v"]
@@ -9,13 +9,9 @@
 [ext_resource type="Script" path="res://ui_root.gd" id="5_flf46"]
 [ext_resource type="PackedScene" uid="uid://odthc1bdo327" path="res://ui/crafting/crafting_dialog.tscn" id="6_eepai"]
 [ext_resource type="Resource" uid="uid://ciihpmcgiyb6j" path="res://data/all_recipes.tres" id="6_pv31d"]
-[ext_resource type="Texture2D" uid="uid://lt14ki8lsasv" path="res://sprites/consumables/Apple.png" id="6_ybvbt"]
-[ext_resource type="Script" path="res://models/items/consumable.gd" id="7_pok7h"]
+[ext_resource type="Resource" uid="uid://d0gapfqeovf3t" path="res://data/items/weapons/sword.tres" id="6_yox10"]
 [ext_resource type="PackedScene" uid="uid://d2nh4w3u6p2mp" path="res://ui/player/player_interface.tscn" id="7_w6jvi"]
-[ext_resource type="Texture2D" uid="uid://cngogl241rx1b" path="res://sprites/equipables/Sword.png" id="8_i7erc"]
-[ext_resource type="Script" path="res://models/items/weapon.gd" id="9_dcwyk"]
 [ext_resource type="PackedScene" uid="uid://f3pir5lw6ngo" path="res://npcs/enemies/enemy.tscn" id="10_l4s2u"]
-[ext_resource type="Resource" uid="uid://cqgtrykgbos63" path="res://data/items/weapons/northern_cristal_dagger.tres" id="10_mmunh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fqhxw"]
 texture = ExtResource("2_s4n8v")
@@ -35,62 +31,6 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_fqhxw")
-
-[sub_resource type="Resource" id="Resource_wa75r"]
-script = ExtResource("7_pok7h")
-health_restore = 10
-name = "Apple"
-icon = ExtResource("6_ybvbt")
-price = 5
-quantity = null
-stack_size = null
-hover_text = "A delicious apple that will restore {} life points."
-description = "The most beautiful apple that you ever seen. It may have falled from the elder tree."
-
-[sub_resource type="Resource" id="Resource_7kagn"]
-script = ExtResource("7_pok7h")
-health_restore = 10
-name = "Apple"
-icon = ExtResource("6_ybvbt")
-price = 5
-quantity = null
-stack_size = null
-hover_text = "A delicious apple that will restore {} life points."
-description = "The most beautiful apple that you ever seen. It may have falled from the elder tree."
-
-[sub_resource type="Resource" id="Resource_6dy4n"]
-script = ExtResource("7_pok7h")
-health_restore = 10
-name = "Apple"
-icon = ExtResource("6_ybvbt")
-price = 5
-quantity = null
-stack_size = null
-hover_text = "A delicious apple that will restore {} life points."
-description = "The most beautiful apple that you ever seen. It may have falled from the elder tree."
-
-[sub_resource type="Resource" id="Resource_ji4bu"]
-script = ExtResource("7_pok7h")
-health_restore = 10
-name = "Apple"
-icon = ExtResource("6_ybvbt")
-price = 5
-quantity = null
-stack_size = null
-hover_text = "A delicious apple that will restore {} life points."
-description = "The most beautiful apple that you ever seen. It may have falled from the elder tree."
-
-[sub_resource type="Resource" id="Resource_6lhvr"]
-script = ExtResource("9_dcwyk")
-attack = 15.0
-durability = 100.0
-name = "Sword"
-icon = ExtResource("8_i7erc")
-price = 110
-quantity = 1
-stack_size = 99
-hover_text = ""
-description = ""
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -115,27 +55,19 @@ script = ExtResource("4_dcrir")
 
 [node name="Apple" parent="PickupItems" instance=ExtResource("3_08ycd")]
 position = Vector2(-182, 37)
-item = SubResource("Resource_wa75r")
 
 [node name="Apple2" parent="PickupItems" instance=ExtResource("3_08ycd")]
 position = Vector2(244, 36)
-item = SubResource("Resource_7kagn")
 
 [node name="Apple3" parent="PickupItems" instance=ExtResource("3_08ycd")]
 position = Vector2(163, -12)
-item = SubResource("Resource_6dy4n")
 
 [node name="Apple4" parent="PickupItems" instance=ExtResource("3_08ycd")]
 position = Vector2(-127, -64)
-item = SubResource("Resource_ji4bu")
 
 [node name="Weapon" parent="PickupItems" instance=ExtResource("3_08ycd")]
 position = Vector2(52, 36)
-item = SubResource("Resource_6lhvr")
-
-[node name="Weapon2" parent="PickupItems" instance=ExtResource("3_08ycd")]
-position = Vector2(-319, 27)
-item = ExtResource("10_mmunh")
+item = ExtResource("6_yox10")
 
 [node name="PlayerUI" type="CanvasLayer" parent="."]
 

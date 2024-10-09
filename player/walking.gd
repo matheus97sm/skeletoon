@@ -24,7 +24,7 @@ func update(delta: float):
 		return
 	
 	var direction = Input.get_axis("move_left", "move_right")
-	player.velocity.x = direction * player.player_speed
+	player.velocity.x = direction * player.player_stats.speed
 	
 	player.move_and_slide()
 	player_utils.flip_player_sprite(skeletoon)

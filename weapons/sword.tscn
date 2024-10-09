@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ko0jg"]
 radius = 4.30533
-height = 30.4149
+height = 35.4127
 
 [node name="Sword" type="Area2D"]
 collision_mask = 4
@@ -18,10 +18,9 @@ scale = Vector2(0.210331, 0.210331)
 texture = ExtResource("1_e02p3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(11.9876, 7.57018)
+position = Vector2(14, 7)
 rotation = -1.84686
 scale = Vector2(0.866392, -1.1094)
 shape = SubResource("CapsuleShape2D_ko0jg")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

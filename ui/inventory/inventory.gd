@@ -33,8 +33,13 @@ func get_items() -> Array[Item]:
 
 
 func get_item_by_name(item_name: String) -> Item:
-	var item_index = _content.find(func(item): return item.name == item_name)
-	return _content[item_index]
+	var found_item
+	for item in _content:
+		if item.name == item_name:
+			found_item = item
+			break
+	
+	return found_item
 
 
 func has_all(items: Array[Item]) -> bool:

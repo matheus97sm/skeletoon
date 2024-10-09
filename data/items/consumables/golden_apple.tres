@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ConsumbaleItem" load_steps=3 format=3 uid="uid://ucvyblbru0lj"]
 
 [ext_resource type="Texture2D" uid="uid://ggin332s2ako" path="res://sprites/consumables/GoldenApple.png" id="1_kto1o"]
-[ext_resource type="Script" path="res://models/consumable.gd" id="2_7sc6h"]
+[ext_resource type="Script" path="res://models/items/consumable.gd" id="2_7sc6h"]
 
 [resource]
 script = ExtResource("2_7sc6h")

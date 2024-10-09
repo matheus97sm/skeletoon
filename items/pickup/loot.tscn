@@ -1,15 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://7bd3r08f21af"]
+[gd_scene load_steps=4 format=3 uid="uid://dd1hmakw6lefy"]
 
-[ext_resource type="Script" path="res://items/pickup/pickup.gd" id="1_7kxep"]
-[ext_resource type="Resource" uid="uid://ry7mjxs2fb0v" path="res://data/items/consumables/apple.tres" id="2_gpio0"]
-[ext_resource type="PackedScene" uid="uid://bp3y3cqwp1iqf" path="res://ui/labels/actions/press_button.tscn" id="3_plnnw"]
+[ext_resource type="Script" path="res://items/pickup/loot.gd" id="1_ppn2g"]
+[ext_resource type="PackedScene" uid="uid://bp3y3cqwp1iqf" path="res://ui/labels/actions/press_button.tscn" id="3_s12q5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uqxw5"]
 radius = 41.0122
 
-[node name="Pickup" type="Area2D"]
-script = ExtResource("1_7kxep")
-item = ExtResource("2_gpio0")
+[node name="Loot" type="Area2D"]
+script = ExtResource("1_ppn2g")
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -17,7 +15,7 @@ unique_name_in_owner = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_uqxw5")
 
-[node name="PressButton" parent="." instance=ExtResource("3_plnnw")]
+[node name="PressButton" parent="." instance=ExtResource("3_s12q5")]
 unique_name_in_owner = true
 visible = false
 z_index = 10

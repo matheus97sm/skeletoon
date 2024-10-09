@@ -20,23 +20,12 @@ shape = SubResource("CircleShape2D_uqxw5")
 [node name="PressButton" parent="." instance=ExtResource("3_plnnw")]
 unique_name_in_owner = true
 visible = false
-z_index = 10
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -82.0
-offset_top = -94.0
-offset_right = -82.0
-offset_bottom = -94.0
-grow_horizontal = 1
-grow_vertical = 1
-size_flags_horizontal = 4
-size_flags_vertical = 4
+offset_left = -58.0
+offset_top = -81.0
+offset_right = -58.0
+offset_bottom = -81.0
 label = "Pick item"
 button_label = "F"
-metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

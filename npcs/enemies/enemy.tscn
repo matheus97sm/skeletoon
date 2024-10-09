@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://f3pir5lw6ngo"]
+
+[ext_resource type="Script" path="res://npcs/enemies/enemy.gd" id="1_4tyel"]
+[ext_resource type="Resource" uid="uid://bxhhmf8yiteyc" path="res://data/characters/enemies/giant_apple.tres" id="2_3vsh7"]
+[ext_resource type="Texture2D" uid="uid://ggin332s2ako" path="res://sprites/consumables/GoldenApple.png" id="2_ff30a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gb83h"]
+radius = 31.0644
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mmlxb"]
+radius = 31.0644
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bxfn"]
+bg_color = Color(0.111197, 0.111197, 0.111197, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrp4d"]
+bg_color = Color(1, 0, 0.0862745, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="Enemy" type="CharacterBody2D"]
+light_mask = 4
+visibility_layer = 4
+script = ExtResource("1_4tyel")
+stats = ExtResource("2_3vsh7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ff30a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gb83h")
+
+[node name="Area2D" type="Area2D" parent="."]
+light_mask = 0
+visibility_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = 0
+visibility_layer = 4
+shape = SubResource("CircleShape2D_mmlxb")
+debug_color = Color(0.993596, 0, 0.235219, 0.42)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -31.0
+offset_top = -46.0
+offset_right = 35.0
+offset_bottom = -42.0
+theme_override_styles/background = SubResource("StyleBoxFlat_6bxfn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qrp4d")
+value = 100.0
+show_percentage = false

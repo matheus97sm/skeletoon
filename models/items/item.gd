@@ -1,6 +1,4 @@
-extends Resource
-
-class_name Item
+class_name Item extends Resource
 
 
 @export var name: String

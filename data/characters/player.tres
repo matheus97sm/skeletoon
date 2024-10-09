@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://61rwis87vh0q"]
+
+[ext_resource type="Script" path="res://models/characters/stats.gd" id="1_mb3su"]
+
+[resource]
+script = ExtResource("1_mb3su")
+health = 100.0
+max_health = 100.0
+speed = 600.0
+jump_speed = -650.0
+attack = 10.0
+deffence = 3.0

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://htmdpu5ipxrs"]
+[gd_scene load_steps=6 format=3 uid="uid://htmdpu5ipxrs"]
 
 [ext_resource type="Script" path="res://ui/inventory/inventory_dialog.gd" id="1_0m63s"]
 [ext_resource type="PackedScene" uid="uid://betkc2x1ow84" path="res://ui/inventory/item_slot.tscn" id="2_koc1t"]
+[ext_resource type="Texture2D" uid="uid://qew0d08gbfur" path="res://sprites/skeletoon/skeletoon.png" id="3_1vann"]
 [ext_resource type="PackedScene" uid="uid://coc2u8t0cwcx6" path="res://ui/item_grid/item_grid.tscn" id="3_vh2hx"]
+[ext_resource type="PackedScene" uid="uid://bhk1demf0ykmt" path="res://ui/item_menu/item_menu.tscn" id="4_3arqg"]
 
 [node name="InventoryDialog" type="PanelContainer"]
 anchors_preset = 15
@@ -13,25 +15,77 @@ grow_vertical = 2
 script = ExtResource("1_0m63s")
 slot_scene = ExtResource("2_koc1t")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Equipments" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="LeftEquipments" type="GridContainer" parent="HBoxContainer/Equipments"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ItemSlot" parent="HBoxContainer/Equipments/LeftEquipments" instance=ExtResource("2_koc1t")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="HBoxContainer/Equipments/LeftEquipments" instance=ExtResource("2_koc1t")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="HBoxContainer/Equipments/LeftEquipments" instance=ExtResource("2_koc1t")]
+layout_mode = 2
+
+[node name="PanelContainer" type="CenterContainer" parent="HBoxContainer/Equipments"]
+custom_minimum_size = Vector2(120, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Skeletoon" type="Sprite2D" parent="HBoxContainer/Equipments/PanelContainer"]
+texture = ExtResource("3_1vann")
+hframes = 15
+vframes = 3
+
+[node name="RightEquipments2" type="GridContainer" parent="HBoxContainer/Equipments"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ItemSlot" parent="HBoxContainer/Equipments/RightEquipments2" instance=ExtResource("2_koc1t")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="HBoxContainer/Equipments/RightEquipments2" instance=ExtResource("2_koc1t")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="HBoxContainer/Equipments/RightEquipments2" instance=ExtResource("2_koc1t")]
+layout_mode = 2
+
+[node name="Inventory" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Inventory"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="HBoxContainer/Inventory/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Your inventory"
 horizontal_alignment = 1
 
-[node name="CloseButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="CloseButton" type="Button" parent="HBoxContainer/Inventory/HBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "x"
 
-[node name="ItemsGrid" parent="VBoxContainer" instance=ExtResource("3_vh2hx")]
+[node name="ItemsGrid" parent="HBoxContainer/Inventory" instance=ExtResource("3_vh2hx")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[node name="Control" type="Container" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ItemMenu" parent="Control" instance=ExtResource("4_3arqg")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="HBoxContainer/Inventory/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

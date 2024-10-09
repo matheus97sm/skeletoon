@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://b32si1ifgr5oc"]
+[gd_scene load_steps=20 format=3 uid="uid://b32si1ifgr5oc"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_iel22"]
+[ext_resource type="Resource" uid="uid://61rwis87vh0q" path="res://data/characters/player.tres" id="2_djsw0"]
 [ext_resource type="Texture2D" uid="uid://qew0d08gbfur" path="res://sprites/skeletoon/skeletoon.png" id="2_tnyww"]
 [ext_resource type="Texture2D" uid="uid://ble2oxicdy83d" path="res://sprites/skeletoon/skeletoon_right_arm.png" id="3_c2oc6"]
 [ext_resource type="Texture2D" uid="uid://dba0a838y461p" path="res://sprites/weapons/Sword_slash_1.png" id="3_s7lab"]
@@ -117,7 +118,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 1, 0]
+"values": [0, 5, 0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -259,11 +260,9 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(3, 3)
 script = ExtResource("1_iel22")
-player_speed = 200.0
-player_jump_speed = -400.0
-player_max_health = 100.0
-player_health = 30.0
+player_stats = ExtResource("2_djsw0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0.5)
@@ -277,7 +276,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_tnyww")
 hframes = 15
 vframes = 3
-frame = 15
+frame = 18
 
 [node name="SwordSlash1" type="Sprite2D" parent="Skeletoon"]
 visible = false
@@ -297,7 +296,8 @@ scale = Vector2(0.868199, 0.868199)
 texture = ExtResource("4_g75qj")
 
 [node name="Weapon" parent="Skeletoon" instance=ExtResource("16_q1r1h")]
-position = Vector2(-6, -2)
+position = Vector2(-7, -3)
+rotation = -2.2169
 collision_layer = 0
 
 [node name="SkeletoonRightArm" type="Sprite2D" parent="Skeletoon"]
@@ -305,7 +305,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_c2oc6")
 hframes = 15
 vframes = 3
-frame = 15
+frame = 18
 
 [node name="PlayerAnimations" type="AnimationPlayer" parent="Skeletoon"]
 unique_name_in_owner = true

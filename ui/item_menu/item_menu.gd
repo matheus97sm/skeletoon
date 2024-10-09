@@ -7,10 +7,12 @@ var methods: Array[String] = []
 
 
 func _on_button_button_up() -> void:
-	queue_free()
+	clear()
 
 
 func start(item: Item):
+	clear()
+	show()
 	_item = item
 	
 	if item.has_method("use"):
@@ -22,4 +24,9 @@ func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_i
 	var clicked_method = methods[index]
 	_item.call(clicked_method, SignalBus)
 	
-	queue_free()
+	clear()
+
+
+func clear():
+	item_list.clear()
+	hide()
