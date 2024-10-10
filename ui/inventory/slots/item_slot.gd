@@ -28,3 +28,6 @@ func _gui_input(event):
 func handle_double_click():
 	if _item.has_method("use"):
 		_item.call("use", SignalBus)
+	
+	if _item.has_method("equipe_item"):
+		_item.call("equipe_item", SignalBus, _item)

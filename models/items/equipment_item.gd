@@ -10,5 +10,9 @@ enum EQUIPMENT_TYPE { WEAPON, ARMOR }
 @export var equipment_type: EQUIPMENT_TYPE
 
 
-func equipe_item(item: EquipmentItem, signal_bus: SignalBus):
+func equipe_item(signal_bus: SignalBus, item: EquipmentItem):
 	signal_bus.equipe_item.emit(item)
+
+
+func remove_item(signal_bus: SignalBus, item: EquipmentItem):
+	signal_bus.remove_item.emit(item)

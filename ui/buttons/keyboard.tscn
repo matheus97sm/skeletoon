@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bf1wt0addgmsv"]
 
 [ext_resource type="Script" path="res://ui/buttons/keyboard.gd" id="1_a8483"]
-[ext_resource type="Texture2D" uid="uid://bfi1jn161io13" path="res://sprites/buttons/KeyboardKey.png" id="2_itjgn"]
+[ext_resource type="Texture2D" uid="uid://bfi1jn161io13" path="res://sprites/ui/buttons/KeyboardKey.png" id="2_itjgn"]
 [ext_resource type="FontFile" uid="uid://gm1u7102clwl" path="res://fonts/Inconsolata-Black.ttf" id="3_u8a6q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_w1i3m"]

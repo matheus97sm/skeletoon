@@ -18,11 +18,15 @@ func start(item: Item):
 	if item.has_method("use"):
 		item_list.add_item("Use item")
 		methods.append("use")
+	
+	if item.has_method("equipe_item"):
+		item_list.add_item("Equipe item")
+		methods.append("equipe_item")
 
 
 func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
 	var clicked_method = methods[index]
-	_item.call(clicked_method, SignalBus)
+	_item.call(clicked_method, SignalBus, _item)
 	
 	clear()
 

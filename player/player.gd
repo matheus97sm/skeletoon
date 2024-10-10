@@ -17,6 +17,7 @@ func _ready() -> void:
 	
 	SignalBus.restore_player_health.connect(heal_player)
 	SignalBus.remove_item_from_inventory.connect(remove_inventory_item)
+	SignalBus.equipe_item.connect(equipe_item)
 
 
 func on_item_picked_up(item: Item):
@@ -26,6 +27,13 @@ func on_item_picked_up(item: Item):
 func remove_inventory_item(item_name: String, quantity: int):
 	var item = inventory.get_item_by_name(item_name)
 	inventory.remove_item(item, quantity)
+
+
+func equipe_item(item: EquipmentItem):
+	if item.equipment_type == EquipmentItem.EQUIPMENT_TYPE.WEAPON:
+		equipment.weapon = item
+	
+	SignalBus.equipment_updated.emit(equipment)
 
 
 func heal_player(quantity: float):

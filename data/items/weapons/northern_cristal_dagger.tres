@@ -1,12 +1,15 @@
-[gd_resource type="Resource" script_class="WeaponItem" load_steps=3 format=3 uid="uid://cqgtrykgbos63"]
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=4 format=3 uid="uid://cqgtrykgbos63"]
 
 [ext_resource type="Texture2D" uid="uid://cqwemp2tplht3" path="res://sprites/equipables/NorthernCristalDagger.png" id="1_a8gnb"]
 [ext_resource type="Script" path="res://models/items/equipment_item.gd" id="1_cl8g8"]
+[ext_resource type="Texture2D" uid="uid://b637vw5pciax1" path="res://sprites/weapons/NorthernCristalDagger.png" id="3_wx43x"]
 
 [resource]
 script = ExtResource("1_cl8g8")
 attack = 12.0
 durability = 100.0
+texture = ExtResource("3_wx43x")
+equipment_type = 0
 name = "Northern Cristal Dagger"
 icon = ExtResource("1_a8gnb")
 price = 100

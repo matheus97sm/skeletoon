@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://player/player.gd" id="1_iel22"]
 [ext_resource type="Resource" uid="uid://61rwis87vh0q" path="res://data/characters/player_stats.tres" id="2_djsw0"]
 [ext_resource type="Texture2D" uid="uid://qew0d08gbfur" path="res://sprites/skeletoon/skeletoon.png" id="2_tnyww"]
-[ext_resource type="Script" path="res://models/characters/equipment.gd" id="3_3dkpa"]
 [ext_resource type="Texture2D" uid="uid://ble2oxicdy83d" path="res://sprites/skeletoon/skeletoon_right_arm.png" id="3_c2oc6"]
+[ext_resource type="Resource" uid="uid://e74bild34e0q" path="res://data/characters/player_equipment.tres" id="3_f87fb"]
 [ext_resource type="Texture2D" uid="uid://dba0a838y461p" path="res://sprites/weapons/Sword_slash_1.png" id="3_s7lab"]
 [ext_resource type="Texture2D" uid="uid://cqre400w3041u" path="res://sprites/weapons/Sword_slash_2.png" id="4_g75qj"]
 [ext_resource type="Script" path="res://player/fsm/fsm.gd" id="7_i4pxy"]
@@ -264,7 +264,7 @@ _data = {
 scale = Vector2(3, 3)
 script = ExtResource("1_iel22")
 player_stats = ExtResource("2_djsw0")
-equipment = ExtResource("3_3dkpa")
+equipment = ExtResource("3_f87fb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0.5)

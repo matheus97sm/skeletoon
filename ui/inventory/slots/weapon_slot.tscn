@@ -1,19 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://crjart24n57qg"]
+[gd_scene load_steps=4 format=3 uid="uid://crjart24n57qg"]
 
+[ext_resource type="Texture2D" uid="uid://biqjvnmoghwux" path="res://sprites/ui/ItemSlot.png" id="1_jqmmt"]
 [ext_resource type="Script" path="res://ui/inventory/slots/weapon_slot.gd" id="1_sma57"]
-[ext_resource type="Texture2D" uid="uid://cngogl241rx1b" path="res://sprites/equipables/Sword.png" id="2_skhlk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_72ad8"]
+texture = ExtResource("1_jqmmt")
 
 [node name="WeaponSlot" type="PanelContainer"]
+custom_minimum_size = Vector2(72, 72)
 offset_right = 128.0
 offset_bottom = 128.0
 mouse_default_cursor_shape = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_72ad8")
 script = ExtResource("1_sma57")
 
-[node name="ItemTexture" type="TextureRect" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="ItemTexture" type="TextureRect" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("2_skhlk")
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="ItemTexture" to="." method="_on_item_texture_mouse_entered"]
+[connection signal="mouse_entered" from="MarginContainer/ItemTexture" to="." method="_on_item_texture_mouse_entered"]
