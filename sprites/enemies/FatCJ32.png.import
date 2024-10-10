@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgjqrb3xai2fm"
-path="res://.godot/imported/InventoryBg.png-a83faa648be24ad7695c50f84c12c767.ctex"
+uid="uid://d4atj5ji740r5"
+path="res://.godot/imported/FatCJ32.png-bd4406615e8642917129df6a7e448848.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/InventoryBg.png"
-dest_files=["res://.godot/imported/InventoryBg.png-a83faa648be24ad7695c50f84c12c767.ctex"]
+source_file="res://sprites/enemies/FatCJ32.png"
+dest_files=["res://.godot/imported/FatCJ32.png-bd4406615e8642917129df6a7e448848.ctex"]
 
 [params]
 
