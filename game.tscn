@@ -142,10 +142,10 @@ item = ExtResource("10_mmunh")
 
 [node name="PlayerInterface" parent="PlayerUI" instance=ExtResource("7_w6jvi")]
 unique_name_in_owner = true
-offset_left = -308.0
-offset_top = -17.0
-offset_right = -308.0
-offset_bottom = -17.0
+offset_left = -7.0
+offset_top = -57.0
+offset_right = -7.0
+offset_bottom = -57.0
 metadata/_edit_use_anchors_ = true
 
 [node name="UIRoot" type="CanvasLayer" parent="."]
