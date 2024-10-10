@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgjqrb3xai2fm"
-path="res://.godot/imported/InventoryBg.png-a83faa648be24ad7695c50f84c12c767.ctex"
+uid="uid://cqews2f0f7omv"
+path="res://.godot/imported/ArmorHelmet72.png-a6368f97e1ddd3141abc5d38e79e5501.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/InventoryBg.png"
-dest_files=["res://.godot/imported/InventoryBg.png-a83faa648be24ad7695c50f84c12c767.ctex"]
+source_file="res://sprites/ui/ArmorHelmet72.png"
+dest_files=["res://.godot/imported/ArmorHelmet72.png-a6368f97e1ddd3141abc5d38e79e5501.ctex"]
 
 [params]
 

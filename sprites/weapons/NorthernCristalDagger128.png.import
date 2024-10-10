@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgjqrb3xai2fm"
-path="res://.godot/imported/InventoryBg.png-a83faa648be24ad7695c50f84c12c767.ctex"
+uid="uid://cc2kchqbwqa8p"
+path="res://.godot/imported/NorthernCristalDagger128.png-af06047d32e954b83732699625f56dea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/InventoryBg.png"
-dest_files=["res://.godot/imported/InventoryBg.png-a83faa648be24ad7695c50f84c12c767.ctex"]
+source_file="res://sprites/weapons/NorthernCristalDagger128.png"
+dest_files=["res://.godot/imported/NorthernCristalDagger128.png-af06047d32e954b83732699625f56dea.ctex"]
 
 [params]
 
