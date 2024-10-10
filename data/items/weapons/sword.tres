@@ -1,16 +1,18 @@
-[gd_resource type="Resource" script_class="WeaponItem" load_steps=3 format=3 uid="uid://d0gapfqeovf3t"]
+[gd_resource type="Resource" script_class="WeaponItem" load_steps=4 format=3 uid="uid://d0gapfqeovf3t"]
 
 [ext_resource type="Texture2D" uid="uid://cngogl241rx1b" path="res://sprites/equipables/Sword.png" id="1_6yjap"]
-[ext_resource type="Script" path="res://models/items/weapon.gd" id="3_l3pi5"]
+[ext_resource type="Script" path="res://models/items/equipment_item.gd" id="3_l3pi5"]
+[ext_resource type="Texture2D" uid="uid://bkhc2fg66d3ns" path="res://sprites/weapons/Sword.png" id="3_uxm67"]
 
 [resource]
 script = ExtResource("3_l3pi5")
 attack = 15.0
 durability = 100.0
+texture = ExtResource("3_uxm67")
 name = "Sword"
 icon = ExtResource("1_6yjap")
 price = 110
-quantity = 1
-stack_size = 99
-hover_text = ""
-description = ""
+quantity = null
+stack_size = 1
+hover_text = null
+description = null

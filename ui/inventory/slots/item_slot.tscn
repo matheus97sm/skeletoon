@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://betkc2x1ow84"]
 
-[ext_resource type="Script" path="res://ui/inventory/item_slot.gd" id="1_dnlht"]
+[ext_resource type="Script" path="res://ui/inventory/slots/item_slot.gd" id="1_dnlht"]
 [ext_resource type="FontFile" uid="uid://gm1u7102clwl" path="res://fonts/Inconsolata-Black.ttf" id="2_uhmy7"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pdnbo"]

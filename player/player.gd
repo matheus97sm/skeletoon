@@ -3,10 +3,11 @@ class_name Player extends CharacterBody2D
 signal update_health
 
 @export var player_stats: Stats
+@export var equipment: Equipment
+
 @onready var player_animations: AnimationPlayer = %PlayerAnimations
 
 var inventory: Inventory = Inventory.new()
-
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 

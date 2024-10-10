@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://models/items/consumable.gd" id="7_pok7h"]
 [ext_resource type="PackedScene" uid="uid://d2nh4w3u6p2mp" path="res://ui/player/player_interface.tscn" id="7_w6jvi"]
 [ext_resource type="Texture2D" uid="uid://cngogl241rx1b" path="res://sprites/equipables/Sword.png" id="8_i7erc"]
-[ext_resource type="Script" path="res://models/items/weapon.gd" id="9_dcwyk"]
+[ext_resource type="Script" path="res://models/items/equipment_item.gd" id="9_dcwyk"]
 [ext_resource type="PackedScene" uid="uid://f3pir5lw6ngo" path="res://npcs/enemies/enemy.tscn" id="10_l4s2u"]
 [ext_resource type="Resource" uid="uid://cqgtrykgbos63" path="res://data/items/weapons/northern_cristal_dagger.tres" id="10_mmunh"]
 
@@ -84,6 +84,7 @@ description = "The most beautiful apple that you ever seen. It may have falled f
 script = ExtResource("9_dcwyk")
 attack = 15.0
 durability = 100.0
+equipment_type = 0
 name = "Sword"
 icon = ExtResource("8_i7erc")
 price = 110

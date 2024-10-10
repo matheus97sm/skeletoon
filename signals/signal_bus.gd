@@ -14,5 +14,9 @@ signal get_items_in_player_range(items: Array[Item])
 signal item_dropped(item: Item, global_position: Vector2)
 
 
+# Equipments
+signal equipe_item(item: EquipmentItem)
+
+
 # GUI
 signal open_inventory_item_menu(item: Item, global_position: Vector2)

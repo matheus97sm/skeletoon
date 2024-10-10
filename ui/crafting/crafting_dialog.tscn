@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/crafting/crafting_dialog.gd" id="1_e0b1p"]
 [ext_resource type="PackedScene" uid="uid://coc2u8t0cwcx6" path="res://ui/item_grid/item_grid.tscn" id="2_8jpwi"]
-[ext_resource type="PackedScene" uid="uid://betkc2x1ow84" path="res://ui/inventory/item_slot.tscn" id="2_wc8he"]
+[ext_resource type="PackedScene" uid="uid://betkc2x1ow84" path="res://ui/inventory/slots/item_slot.tscn" id="2_wc8he"]
 
 [node name="CraftingDialog" type="PanelContainer"]
 anchors_preset = 15

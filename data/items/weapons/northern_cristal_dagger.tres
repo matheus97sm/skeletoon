@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponItem" load_steps=3 format=3 uid="uid://cqgtrykgbos63"]
 
 [ext_resource type="Texture2D" uid="uid://cqwemp2tplht3" path="res://sprites/equipables/NorthernCristalDagger.png" id="1_a8gnb"]
-[ext_resource type="Script" path="res://models/items/weapon.gd" id="1_cl8g8"]
+[ext_resource type="Script" path="res://models/items/equipment_item.gd" id="1_cl8g8"]
 
 [resource]
 script = ExtResource("1_cl8g8")
