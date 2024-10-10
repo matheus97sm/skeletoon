@@ -14,5 +14,5 @@ func equipe_item(signal_bus: SignalBus, item: EquipmentItem):
 	signal_bus.equipe_item.emit(item)
 
 
-func remove_item(signal_bus: SignalBus, item: EquipmentItem):
-	signal_bus.remove_item.emit(item)
+func unequipe_item(signal_bus: SignalBus, item: EquipmentItem):
+	signal_bus.unequipe_item.emit(item)

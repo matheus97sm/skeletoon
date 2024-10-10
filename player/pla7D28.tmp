@@ -1,12 +1,12 @@
 [gd_scene load_steps=22 format=3 uid="uid://b32si1ifgr5oc"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_iel22"]
-[ext_resource type="Resource" uid="uid://61rwis87vh0q" path="res://data/characters/player_base_stats.tres" id="2_aoalq"]
+[ext_resource type="Resource" uid="uid://61rwis87vh0q" path="res://data/characters/player_base_stats.tres" id="2_djsw0"]
 [ext_resource type="Texture2D" uid="uid://qew0d08gbfur" path="res://sprites/skeletoon/skeletoon.png" id="2_tnyww"]
-[ext_resource type="Resource" uid="uid://dyag6tcd2ou6w" path="res://data/characters/player_stats.tres" id="3_b0c8l"]
 [ext_resource type="Texture2D" uid="uid://ble2oxicdy83d" path="res://sprites/skeletoon/skeletoon_right_arm.png" id="3_c2oc6"]
+[ext_resource type="Resource" uid="uid://e74bild34e0q" path="res://data/characters/player_equipment.tres" id="3_f87fb"]
+[ext_resource type="Resource" uid="uid://dyag6tcd2ou6w" path="res://data/characters/player_stats.tres" id="3_lulog"]
 [ext_resource type="Texture2D" uid="uid://dba0a838y461p" path="res://sprites/weapons/Sword_slash_1.png" id="3_s7lab"]
-[ext_resource type="Resource" uid="uid://e74bild34e0q" path="res://data/characters/player_equipment.tres" id="4_1sev2"]
 [ext_resource type="Texture2D" uid="uid://cqre400w3041u" path="res://sprites/weapons/Sword_slash_2.png" id="4_g75qj"]
 [ext_resource type="Script" path="res://player/fsm/fsm.gd" id="7_i4pxy"]
 [ext_resource type="Script" path="res://player/fsm/idle.gd" id="8_3q3st"]
@@ -264,9 +264,9 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_iel22")
-player_base_stats = ExtResource("2_aoalq")
-player_stats = ExtResource("3_b0c8l")
-equipment = ExtResource("4_1sev2")
+player_base_stats = ExtResource("2_djsw0")
+player_stats = ExtResource("3_lulog")
+equipment = ExtResource("3_f87fb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0.5)

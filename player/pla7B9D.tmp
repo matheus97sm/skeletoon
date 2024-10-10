@@ -1,12 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://b32si1ifgr5oc"]
+[gd_scene load_steps=21 format=3 uid="uid://b32si1ifgr5oc"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_iel22"]
-[ext_resource type="Resource" uid="uid://61rwis87vh0q" path="res://data/characters/player_base_stats.tres" id="2_aoalq"]
+[ext_resource type="Resource" uid="uid://61rwis87vh0q" path="res://data/characters/player_stats.tres" id="2_djsw0"]
 [ext_resource type="Texture2D" uid="uid://qew0d08gbfur" path="res://sprites/skeletoon/skeletoon.png" id="2_tnyww"]
-[ext_resource type="Resource" uid="uid://dyag6tcd2ou6w" path="res://data/characters/player_stats.tres" id="3_b0c8l"]
 [ext_resource type="Texture2D" uid="uid://ble2oxicdy83d" path="res://sprites/skeletoon/skeletoon_right_arm.png" id="3_c2oc6"]
+[ext_resource type="Resource" uid="uid://e74bild34e0q" path="res://data/characters/player_equipment.tres" id="3_f87fb"]
 [ext_resource type="Texture2D" uid="uid://dba0a838y461p" path="res://sprites/weapons/Sword_slash_1.png" id="3_s7lab"]
-[ext_resource type="Resource" uid="uid://e74bild34e0q" path="res://data/characters/player_equipment.tres" id="4_1sev2"]
 [ext_resource type="Texture2D" uid="uid://cqre400w3041u" path="res://sprites/weapons/Sword_slash_2.png" id="4_g75qj"]
 [ext_resource type="Script" path="res://player/fsm/fsm.gd" id="7_i4pxy"]
 [ext_resource type="Script" path="res://player/fsm/idle.gd" id="8_3q3st"]
@@ -24,7 +23,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Skeletoon/Sword/SwordSlash1:visible")
+tracks/0/path = NodePath("Skeletoon/SwordSlash1:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,7 +35,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Skeletoon/Sword/SwordSlash2:visible")
+tracks/1/path = NodePath("Skeletoon/SwordSlash2:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -48,7 +47,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Skeletoon/Sword/Weapon:collision_mask")
+tracks/2/path = NodePath("Skeletoon/Weapon:collision_mask")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -89,7 +88,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Skeletoon/Sword/Weapon:position")
+tracks/2/path = NodePath("Skeletoon/Weapon:position")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -101,7 +100,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Skeletoon/Sword/Weapon:rotation")
+tracks/3/path = NodePath("Skeletoon/Weapon:rotation")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -113,7 +112,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Skeletoon/Sword/Weapon:collision_mask")
+tracks/4/path = NodePath("Skeletoon/Weapon:collision_mask")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -125,7 +124,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Skeletoon/Sword/SwordSlash1:visible")
+tracks/5/path = NodePath("Skeletoon/SwordSlash1:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -137,7 +136,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Skeletoon/Sword/SwordSlash2:visible")
+tracks/6/path = NodePath("Skeletoon/SwordSlash2:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -153,7 +152,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Skeletoon/Sword/Weapon:position")
+tracks/0/path = NodePath("Skeletoon/Weapon:position")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -189,7 +188,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Skeletoon/Sword/Weapon:rotation")
+tracks/3/path = NodePath("Skeletoon/Weapon:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -231,7 +230,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Skeletoon/Sword/Weapon:position")
+tracks/2/path = NodePath("Skeletoon/Weapon:position")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -243,7 +242,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Skeletoon/Sword/Weapon:rotation")
+tracks/3/path = NodePath("Skeletoon/Weapon:rotation")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -264,9 +263,8 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_iel22")
-player_base_stats = ExtResource("2_aoalq")
-player_stats = ExtResource("3_b0c8l")
-equipment = ExtResource("4_1sev2")
+player_stats = ExtResource("2_djsw0")
+equipment = ExtResource("3_f87fb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0.5)
@@ -280,11 +278,9 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_tnyww")
 hframes = 15
 vframes = 3
-frame = 15
+frame = 18
 
-[node name="Sword" type="Node2D" parent="Skeletoon"]
-
-[node name="SwordSlash1" type="Sprite2D" parent="Skeletoon/Sword"]
+[node name="SwordSlash1" type="Sprite2D" parent="Skeletoon"]
 visible = false
 modulate = Color(0.294118, 0.788235, 0.827451, 0.631373)
 texture_filter = 1
@@ -293,7 +289,7 @@ rotation = -0.399271
 scale = Vector2(0.761007, 0.822846)
 texture = ExtResource("3_s7lab")
 
-[node name="SwordSlash2" type="Sprite2D" parent="Skeletoon/Sword"]
+[node name="SwordSlash2" type="Sprite2D" parent="Skeletoon"]
 visible = false
 modulate = Color(0.505882, 0.92549, 0.921569, 0.627451)
 position = Vector2(24, -9.53674e-07)
@@ -301,8 +297,9 @@ rotation = 1.27153
 scale = Vector2(0.868199, 0.868199)
 texture = ExtResource("4_g75qj")
 
-[node name="Weapon" parent="Skeletoon/Sword" instance=ExtResource("16_q1r1h")]
-position = Vector2(-6, -2)
+[node name="Weapon" parent="Skeletoon" instance=ExtResource("16_q1r1h")]
+position = Vector2(-7, -3)
+rotation = -2.2169
 collision_layer = 0
 
 [node name="SkeletoonRightArm" type="Sprite2D" parent="Skeletoon"]
@@ -310,7 +307,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_c2oc6")
 hframes = 15
 vframes = 3
-frame = 15
+frame = 18
 
 [node name="PlayerAnimations" type="AnimationPlayer" parent="Skeletoon"]
 unique_name_in_owner = true

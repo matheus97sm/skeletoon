@@ -8,9 +8,13 @@ func _ready() -> void:
 
 
 func update_weapon(equipment: Equipment):
+	if not equipment.weapon:
+		sword_texture.texture = null
+		return
+	
 	sword_texture.texture = equipment.weapon.texture
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(body: CharacterBody2D) -> void:
 	if body.has_method("take_damage"):
-		body.take_damage(50)
+		SignalBus.inflict_damage_to_enemy.emit(body)

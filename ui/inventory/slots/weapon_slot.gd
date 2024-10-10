@@ -15,11 +15,21 @@ func update_equipment_item(equipment: Equipment):
 
 
 func display_item(item: EquipmentItem):
+	if not item:
+		remove_item()
+		return
+	
 	item_texture.texture = item.icon
 	_item = item
 	
 	if item.hover_text:
 		tooltip_text = item.hover_text
+
+
+func remove_item():
+	_item = null
+	item_texture.texture = null
+	tooltip_text = ""
 
 
 func _gui_input(event):
@@ -34,6 +44,6 @@ func _gui_input(event):
 
 
 func handle_double_click():	
-	if _item.has_method("remove_item"):
-		_item.call("remove_item", SignalBus)
+	if _item.has_method("unequipe_item"):
+		_item.call("unequipe_item", SignalBus, _item)
 		return

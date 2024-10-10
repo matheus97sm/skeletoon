@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cesmygefv5go7"]
+
+[ext_resource type="Script" path="res://ui/inventory/stats/stats_item.gd" id="1_rhnu6"]
+
+[node name="StatsItem" type="MarginContainer"]
+script = ExtResource("1_rhnu6")
+
+[node name="StatsContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StatsLabel" type="Label" parent="StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Attack:"
+
+[node name="StatsValue" type="Label" parent="StatsContainer"]
+layout_mode = 2
+text = "120"

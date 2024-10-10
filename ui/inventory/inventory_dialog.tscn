@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://htmdpu5ipxrs"]
+[gd_scene load_steps=8 format=3 uid="uid://htmdpu5ipxrs"]
 
 [ext_resource type="Script" path="res://ui/inventory/inventory_dialog.gd" id="1_0m63s"]
 [ext_resource type="PackedScene" uid="uid://betkc2x1ow84" path="res://ui/inventory/slots/item_slot.tscn" id="2_koc1t"]
+[ext_resource type="PackedScene" uid="uid://cesmygefv5go7" path="res://ui/inventory/stats/stats_item.tscn" id="3_87udi"]
 [ext_resource type="PackedScene" uid="uid://dyp7udmlq4tfs" path="res://player/dumb/player_dumb.tscn" id="3_j05aa"]
 [ext_resource type="PackedScene" uid="uid://coc2u8t0cwcx6" path="res://ui/item_grid/item_grid.tscn" id="3_vh2hx"]
 [ext_resource type="PackedScene" uid="uid://bhk1demf0ykmt" path="res://ui/item_menu/item_menu.tscn" id="4_3arqg"]
@@ -18,6 +19,14 @@ slot_scene = ExtResource("2_koc1t")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+
+[node name="Stats" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="StatsItem" parent="HBoxContainer/Stats" instance=ExtResource("3_87udi")]
+layout_mode = 2
+label = "Attack:"
+value = "100"
 
 [node name="Equipments" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
