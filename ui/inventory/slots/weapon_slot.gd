@@ -43,7 +43,10 @@ func _gui_input(event):
 		SignalBus.open_inventory_item_menu.emit(_item, get_global_mouse_position())
 
 
-func handle_double_click():	
+func handle_double_click():
+	if not _item:
+		return
+	
 	if _item.has_method("unequipe_item"):
 		_item.call("unequipe_item", SignalBus, _item)
 		return

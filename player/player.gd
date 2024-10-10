@@ -8,7 +8,7 @@ class_name Player extends CharacterBody2D
 @onready var player_animations: AnimationPlayer = %PlayerAnimations
 
 var inventory: Inventory = Inventory.new()
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = 1400
 var player_utils = PlayerUtils.new()
 
 func _ready() -> void:

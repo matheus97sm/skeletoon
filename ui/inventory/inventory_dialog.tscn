@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://htmdpu5ipxrs"]
+[gd_scene load_steps=10 format=3 uid="uid://htmdpu5ipxrs"]
 
 [ext_resource type="Script" path="res://ui/inventory/inventory_dialog.gd" id="1_0m63s"]
 [ext_resource type="PackedScene" uid="uid://betkc2x1ow84" path="res://ui/inventory/slots/item_slot.tscn" id="2_koc1t"]
 [ext_resource type="PackedScene" uid="uid://cesmygefv5go7" path="res://ui/inventory/stats/stats_item.tscn" id="3_87udi"]
+[ext_resource type="Texture2D" uid="uid://ckbd20rd877wr" path="res://sprites/ui/InventoryBg64.png" id="3_g45dr"]
 [ext_resource type="PackedScene" uid="uid://dyp7udmlq4tfs" path="res://player/dumb/player_dumb.tscn" id="3_j05aa"]
 [ext_resource type="PackedScene" uid="uid://coc2u8t0cwcx6" path="res://ui/item_grid/item_grid.tscn" id="3_vh2hx"]
 [ext_resource type="PackedScene" uid="uid://bhk1demf0ykmt" path="res://ui/item_menu/item_menu.tscn" id="4_3arqg"]
 [ext_resource type="PackedScene" uid="uid://crjart24n57qg" path="res://ui/inventory/slots/weapon_slot.tscn" id="4_nhm1n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fgrur"]
 
 [node name="InventoryDialog" type="PanelContainer"]
 anchors_preset = 15
@@ -14,102 +17,186 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fgrur")
 script = ExtResource("1_0m63s")
 slot_scene = ExtResource("2_koc1t")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="BG" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("3_g45dr")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="StatsContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Stats" type="VBoxContainer" parent="HBoxContainer"]
+[node name="BG3" type="NinePatchRect" parent="MarginContainer/HBoxContainer/StatsContainer"]
+layout_mode = 2
+texture = ExtResource("3_g45dr")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/StatsContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Stats" type="VBoxContainer" parent="MarginContainer/HBoxContainer/StatsContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="StatsItem" parent="HBoxContainer/Stats" instance=ExtResource("3_87udi")]
+[node name="MaxHealth" parent="MarginContainer/HBoxContainer/StatsContainer/MarginContainer/Stats" instance=ExtResource("3_87udi")]
+unique_name_in_owner = true
 layout_mode = 2
-label = "Attack:"
-value = "100"
+label = "Max health"
 
-[node name="Equipments" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Attack" parent="MarginContainer/HBoxContainer/StatsContainer/MarginContainer/Stats" instance=ExtResource("3_87udi")]
+unique_name_in_owner = true
+layout_mode = 2
+label = "Attack"
+
+[node name="Speed" parent="MarginContainer/HBoxContainer/StatsContainer/MarginContainer/Stats" instance=ExtResource("3_87udi")]
+unique_name_in_owner = true
+layout_mode = 2
+label = "Speed"
+
+[node name="Deffence" parent="MarginContainer/HBoxContainer/StatsContainer/MarginContainer/Stats" instance=ExtResource("3_87udi")]
+unique_name_in_owner = true
+layout_mode = 2
+label = "Deffence"
+
+[node name="EquipmentContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Armor" type="HBoxContainer" parent="HBoxContainer/Equipments"]
+[node name="BG" type="NinePatchRect" parent="MarginContainer/HBoxContainer/EquipmentContainer"]
+layout_mode = 2
+texture = ExtResource("3_g45dr")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Equipments" type="VBoxContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2"]
 layout_mode = 2
 
-[node name="LeftEquipments" type="GridContainer" parent="HBoxContainer/Equipments/Armor"]
+[node name="Armor" type="HBoxContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments"]
+layout_mode = 2
+
+[node name="LeftEquipments" type="GridContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor"]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_constants/v_separation = -1
 
-[node name="ItemSlot" parent="HBoxContainer/Equipments/Armor/LeftEquipments" instance=ExtResource("2_koc1t")]
+[node name="ItemSlot" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor/LeftEquipments" instance=ExtResource("2_koc1t")]
 layout_mode = 2
 
-[node name="ItemSlot2" parent="HBoxContainer/Equipments/Armor/LeftEquipments" instance=ExtResource("2_koc1t")]
+[node name="ItemSlot2" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor/LeftEquipments" instance=ExtResource("2_koc1t")]
 layout_mode = 2
 
-[node name="ItemSlot3" parent="HBoxContainer/Equipments/Armor/LeftEquipments" instance=ExtResource("2_koc1t")]
+[node name="ItemSlot3" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor/LeftEquipments" instance=ExtResource("2_koc1t")]
 layout_mode = 2
 
-[node name="ItemSlot4" parent="HBoxContainer/Equipments/Armor/LeftEquipments" instance=ExtResource("2_koc1t")]
+[node name="ItemSlot4" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor/LeftEquipments" instance=ExtResource("2_koc1t")]
 layout_mode = 2
 
-[node name="PanelContainer" type="CenterContainer" parent="HBoxContainer/Equipments/Armor"]
+[node name="PanelContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor"]
 custom_minimum_size = Vector2(150, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="PlayerDumb" parent="HBoxContainer/Equipments/Armor/PanelContainer" instance=ExtResource("3_j05aa")]
+[node name="PlayerDumb" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor/PanelContainer" instance=ExtResource("3_j05aa")]
 position = Vector2(72, 135)
 
-[node name="RightEquipments" type="GridContainer" parent="HBoxContainer/Equipments/Armor"]
+[node name="RightEquipments" type="GridContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor"]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_constants/v_separation = -1
 
-[node name="ItemSlot" parent="HBoxContainer/Equipments/Armor/RightEquipments" instance=ExtResource("2_koc1t")]
+[node name="ItemSlot" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor/RightEquipments" instance=ExtResource("2_koc1t")]
 layout_mode = 2
 
-[node name="ItemSlot2" parent="HBoxContainer/Equipments/Armor/RightEquipments" instance=ExtResource("2_koc1t")]
+[node name="ItemSlot2" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor/RightEquipments" instance=ExtResource("2_koc1t")]
 layout_mode = 2
 
-[node name="ItemSlot3" parent="HBoxContainer/Equipments/Armor/RightEquipments" instance=ExtResource("2_koc1t")]
+[node name="ItemSlot3" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor/RightEquipments" instance=ExtResource("2_koc1t")]
 layout_mode = 2
 
-[node name="ItemSlot4" parent="HBoxContainer/Equipments/Armor/RightEquipments" instance=ExtResource("2_koc1t")]
+[node name="ItemSlot4" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor/RightEquipments" instance=ExtResource("2_koc1t")]
 layout_mode = 2
 
-[node name="Weapons" type="GridContainer" parent="HBoxContainer/Equipments"]
+[node name="Weapons" type="GridContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme_override_constants/h_separation = -1
+theme_override_constants/v_separation = 0
 columns = 3
 
-[node name="WeaponSlot" parent="HBoxContainer/Equipments/Weapons" instance=ExtResource("4_nhm1n")]
+[node name="WeaponSlot" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Weapons" instance=ExtResource("4_nhm1n")]
 layout_mode = 2
 
-[node name="ItemSlot2" parent="HBoxContainer/Equipments/Weapons" instance=ExtResource("2_koc1t")]
+[node name="ItemSlot2" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Weapons" instance=ExtResource("2_koc1t")]
 layout_mode = 2
 
-[node name="ItemSlot3" parent="HBoxContainer/Equipments/Weapons" instance=ExtResource("2_koc1t")]
+[node name="ItemSlot3" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Weapons" instance=ExtResource("2_koc1t")]
 layout_mode = 2
 
-[node name="Inventory" type="VBoxContainer" parent="HBoxContainer"]
+[node name="InventoryContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Inventory"]
+[node name="BG" type="NinePatchRect" parent="MarginContainer/HBoxContainer/InventoryContainer"]
+layout_mode = 2
+texture = ExtResource("3_g45dr")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer/InventoryContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Inventory" type="VBoxContainer" parent="MarginContainer/HBoxContainer/InventoryContainer/MarginContainer3"]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="HBoxContainer/Inventory/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Your inventory"
-horizontal_alignment = 1
-
-[node name="CloseButton" type="Button" parent="HBoxContainer/Inventory/HBoxContainer"]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "x"
-
-[node name="ItemsGrid" parent="HBoxContainer/Inventory" instance=ExtResource("3_vh2hx")]
+[node name="ItemsGrid" parent="MarginContainer/HBoxContainer/InventoryContainer/MarginContainer3/Inventory" instance=ExtResource("3_vh2hx")]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/h_separation = -1
+theme_override_constants/v_separation = -1
+
+[node name="CloseButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+text = "x"
 
 [node name="Control" type="Container" parent="."]
 layout_mode = 2
@@ -120,4 +207,4 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[connection signal="pressed" from="HBoxContainer/Inventory/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

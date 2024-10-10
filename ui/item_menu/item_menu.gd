@@ -11,6 +11,9 @@ func _on_button_button_up() -> void:
 
 
 func start(item: Item):
+	if not item:
+		return
+	
 	clear()
 	show()
 	_item = item
@@ -22,6 +25,10 @@ func start(item: Item):
 	if item.has_method("equipe_item"):
 		item_list.add_item("Equipe item")
 		methods.append("equipe_item")
+	
+	if item.has_method("unequipe_item"):
+		item_list.add_item("Unequipe item")
+		methods.append("unequipe_item")
 
 
 func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:

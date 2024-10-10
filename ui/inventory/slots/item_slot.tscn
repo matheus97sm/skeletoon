@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://betkc2x1ow84"]
+[gd_scene load_steps=7 format=3 uid="uid://betkc2x1ow84"]
 
-[ext_resource type="Texture2D" uid="uid://biqjvnmoghwux" path="res://sprites/ui/ItemSlot.png" id="1_5nwg6"]
+[ext_resource type="Texture2D" uid="uid://kkasi2d6632q" path="res://sprites/ui/ItemSlot.png" id="1_5nwg6"]
 [ext_resource type="Script" path="res://ui/inventory/slots/item_slot.gd" id="1_dnlht"]
 [ext_resource type="FontFile" uid="uid://gm1u7102clwl" path="res://fonts/Inconsolata-Black.ttf" id="2_uhmy7"]
-[ext_resource type="Texture2D" uid="uid://lt14ki8lsasv" path="res://sprites/consumables/Apple.png" id="3_yxq6c"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hefsc"]
 texture = ExtResource("1_5nwg6")
@@ -27,6 +26,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_hefsc")
 script = ExtResource("1_dnlht")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 3
@@ -36,7 +36,6 @@ theme_override_constants/margin_bottom = 3
 [node name="ItemTexture" type="TextureRect" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("3_yxq6c")
 
 [node name="QuantityLabel" type="Label" parent="MarginContainer"]
 unique_name_in_owner = true
@@ -44,7 +43,6 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_y3cfn")
-text = "1"
 label_settings = SubResource("LabelSettings_odhmc")
 horizontal_alignment = 2
 vertical_alignment = 1

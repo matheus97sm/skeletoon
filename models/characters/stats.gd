@@ -7,7 +7,7 @@ class_name Stats extends Resource
 
 # Speeds
 @export var speed: float = 200.0
-@export var jump_speed: float = -400.0
+@export var jump_speed: float = -800.0
 
 # Main Stats
 @export var attack: float = 5.0

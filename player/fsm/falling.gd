@@ -8,7 +8,7 @@ func enter():
 func update(delta: float):
 	var input_direction_x := Input.get_axis("move_left", "move_right")
 	player.velocity.x = player.player_stats.speed * input_direction_x
-	player.velocity.y += player.gravity * delta
+	player.velocity.y += player.gravity * (delta * 2)
 	player.move_and_slide()
 	player_utils.flip_player_sprite(skeletoon)
 

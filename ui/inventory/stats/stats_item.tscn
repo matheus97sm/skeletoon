@@ -12,8 +12,6 @@ theme_override_constants/separation = 10
 [node name="StatsLabel" type="Label" parent="StatsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Attack:"
 
 [node name="StatsValue" type="Label" parent="StatsContainer"]
 layout_mode = 2
-text = "120"
