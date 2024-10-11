@@ -3,7 +3,7 @@ class_name Player extends CharacterBody2D
 
 @export var player_base_stats: PlayerStats
 @export var player_stats: PlayerStats
-@export var equipment: Equipment
+@export var equipments: Equipments
 
 @onready var player_animations: AnimationPlayer = %PlayerAnimations
 
@@ -30,7 +30,7 @@ func _ready() -> void:
 
 # Player Stats
 func update_player_stats():
-	var new_player_stats = player_utils.calculate_player_stats(player_base_stats, player_stats.health, equipment)
+	var new_player_stats = player_utils.calculate_player_stats(player_base_stats, player_stats.health, equipments)
 	player_stats = new_player_stats
 	SignalBus.stats_updated.emit(player_stats)
 
@@ -54,7 +54,14 @@ func inflict_damage_to_enemy(enemy: CharacterBody2D):
 		print("It looks like this is not an enemy.")
 		return
 	
-	enemy.take_damage(player_stats.attack)
+	var critical_rng = randf_range(0, 1)
+	var is_crit = critical_rng < player_stats.crit_chance
+	
+	var damage = player_stats.attack
+	
+	if is_crit: damage = damage * player_stats.crit_damage
+	
+	enemy.take_damage(damage, is_crit)
 
 
 # Inventory
@@ -68,16 +75,31 @@ func remove_inventory_item(item_name: String, quantity: int):
 
 
 func equipe_item(item: EquipmentItem):
-	if item.equipment_type == EquipmentItem.EQUIPMENT_TYPE.WEAPON:
-		equipment.weapon = item
+	var available_slot: Equipment
+	
+	for slot in equipments.get_all_equipments():
+		if slot.type != item.equipment_type:
+			continue
+		
+		if not slot.item:
+			available_slot = slot
+			break
+		
+		available_slot = slot
+	
+	available_slot.item = item
 	
 	update_player_stats()
-	SignalBus.equipment_updated.emit(equipment)
+	SignalBus.equipment_updated.emit(available_slot)
 
 
-func unequipe_item(item: EquipmentItem):
-	if item.equipment_type == EquipmentItem.EQUIPMENT_TYPE.WEAPON:
-		equipment.weapon = null
+func unequipe_item(equipment: Equipment):
+	for slot in equipments.get_all_equipments():
+		if equipment.slot != slot.slot:
+			continue
+		
+		slot.item = null
+		break
 	
 	update_player_stats()
 	SignalBus.equipment_updated.emit(equipment)

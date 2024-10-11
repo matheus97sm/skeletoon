@@ -13,16 +13,20 @@ func flip_player_sprite(player_sprite: Node2D):
 		return
 
 
-func calculate_player_stats(player_base_stats: Stats, current_health: float, equipments: Equipment) -> Stats:
+func calculate_player_stats(player_base_stats: Stats, current_health: float, equipments: Equipments) -> Stats:
 	var player_stats: PlayerStats
 	
 	player_stats = player_base_stats.duplicate()
 	
 	for equipment in equipments.get_all_equipments():
-		if not equipment:
+		if not equipment or not equipment.item:
 			continue
 		
-		player_stats.attack += equipment.attack
+		var item = equipment.item
+		
+		player_stats.attack += item.attack
+		player_stats.crit_chance += item.crit_chance
+		player_stats.crit_damage += item.crit_damage
 	
 	player_stats.health = current_health
 	

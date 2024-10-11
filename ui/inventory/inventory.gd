@@ -22,10 +22,18 @@ func add_item(item: Item) -> void:
 		if not _item:
 			continue
 		
-		if _item.name == item.name:
-			_item.quantity += item.quantity
-			SignalBus.inventory_updated.emit()
-			return
+		if _item.name != item.name:
+			continue
+		
+		if _item.stack_size == _item.quantity:
+			continue
+		
+		if _item.stack_size < _item.quantity + item.quantity:
+			continue
+		
+		_item.quantity += item.quantity
+		SignalBus.inventory_updated.emit()
+		return
 	
 	var new_item = item.duplicate()
 	_content[first_empty_slot] = new_item

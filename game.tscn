@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dqpgqgqof2qwm"]
+[gd_scene load_steps=22 format=4 uid="uid://dqpgqgqof2qwm"]
 
 [ext_resource type="PackedScene" uid="uid://b32si1ifgr5oc" path="res://player/player.tscn" id="1_wd3il"]
 [ext_resource type="Texture2D" uid="uid://ducq76m6fs42m" path="res://tilemap/tilemap.png" id="2_s4n8v"]
@@ -12,12 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://lt14ki8lsasv" path="res://sprites/consumables/Apple.png" id="6_ybvbt"]
 [ext_resource type="Script" path="res://models/items/consumable.gd" id="7_pok7h"]
 [ext_resource type="PackedScene" uid="uid://d2nh4w3u6p2mp" path="res://ui/player/player_interface.tscn" id="7_w6jvi"]
-[ext_resource type="Texture2D" uid="uid://cngogl241rx1b" path="res://sprites/equipables/Sword.png" id="8_i7erc"]
-[ext_resource type="Script" path="res://models/items/equipment_item.gd" id="9_dcwyk"]
-[ext_resource type="Texture2D" uid="uid://bkhc2fg66d3ns" path="res://sprites/weapons/Sword.png" id="10_ke6lc"]
+[ext_resource type="Resource" uid="uid://d0gapfqeovf3t" path="res://data/items/weapons/sword.tres" id="8_txcat"]
+[ext_resource type="Resource" uid="uid://cqgtrykgbos63" path="res://data/items/weapons/northern_cristal_dagger.tres" id="9_jq188"]
 [ext_resource type="PackedScene" uid="uid://f3pir5lw6ngo" path="res://npcs/enemies/enemy.tscn" id="10_l4s2u"]
-[ext_resource type="Texture2D" uid="uid://cqwemp2tplht3" path="res://sprites/equipables/NorthernCristalDagger.png" id="11_fe1pc"]
-[ext_resource type="Texture2D" uid="uid://b637vw5pciax1" path="res://sprites/weapons/NorthernCristalDagger.png" id="12_ce1o8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fqhxw"]
 texture = ExtResource("2_s4n8v")
@@ -82,34 +79,6 @@ stack_size = null
 hover_text = "A delicious apple that will restore {} life points."
 description = "The most beautiful apple that you ever seen. It may have falled from the elder tree."
 
-[sub_resource type="Resource" id="Resource_bk0e2"]
-script = ExtResource("9_dcwyk")
-attack = 15.0
-durability = 100.0
-texture = ExtResource("10_ke6lc")
-equipment_type = 0
-name = "Sword"
-icon = ExtResource("8_i7erc")
-price = 110
-quantity = 1
-stack_size = 1
-hover_text = ""
-description = ""
-
-[sub_resource type="Resource" id="Resource_qvfrt"]
-script = ExtResource("9_dcwyk")
-attack = 12.0
-durability = 100.0
-texture = ExtResource("12_ce1o8")
-equipment_type = 0
-name = "Northern Cristal Dagger"
-icon = ExtResource("11_fe1pc")
-price = 100
-quantity = 1
-stack_size = 1
-hover_text = ""
-description = ""
-
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 
@@ -120,9 +89,10 @@ tile_set = SubResource("TileSet_hx3l7")
 
 [node name="Player" parent="." instance=ExtResource("1_wd3il")]
 unique_name_in_owner = true
-position = Vector2(953, 484)
+position = Vector2(945, 504)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.15, 1.15)
 
 [node name="ClosedBox" parent="." instance=ExtResource("3_i7dxf")]
 position = Vector2(879, 550)
@@ -149,11 +119,15 @@ item = SubResource("Resource_ji4bu")
 
 [node name="Weapon" parent="PickupItems" instance=ExtResource("3_08ycd")]
 position = Vector2(52, 36)
-item = SubResource("Resource_bk0e2")
+item = ExtResource("8_txcat")
 
 [node name="Weapon2" parent="PickupItems" instance=ExtResource("3_08ycd")]
 position = Vector2(-319, 27)
-item = SubResource("Resource_qvfrt")
+item = ExtResource("9_jq188")
+
+[node name="Weapon3" parent="PickupItems" instance=ExtResource("3_08ycd")]
+position = Vector2(-533, 27)
+item = ExtResource("9_jq188")
 
 [node name="PlayerUI" type="CanvasLayer" parent="."]
 

@@ -1,6 +1,61 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=2 format=3 uid="uid://e74bild34e0q"]
+[gd_resource type="Resource" script_class="Equipments" load_steps=12 format=3 uid="uid://e74bild34e0q"]
 
 [ext_resource type="Script" path="res://models/characters/equipment.gd" id="1_phukr"]
+[ext_resource type="Script" path="res://models/characters/equipments.gd" id="2_anp2j"]
+
+[sub_resource type="Resource" id="Resource_dxl8x"]
+script = ExtResource("1_phukr")
+type = 3
+slot = 3
+
+[sub_resource type="Resource" id="Resource_6xo5s"]
+script = ExtResource("1_phukr")
+type = 7
+slot = 8
+
+[sub_resource type="Resource" id="Resource_pj88b"]
+script = ExtResource("1_phukr")
+type = 2
+slot = 2
+
+[sub_resource type="Resource" id="Resource_87axf"]
+script = ExtResource("1_phukr")
+type = 1
+slot = 1
+
+[sub_resource type="Resource" id="Resource_l8ove"]
+script = ExtResource("1_phukr")
+type = 4
+slot = 4
+
+[sub_resource type="Resource" id="Resource_pogbc"]
+script = ExtResource("1_phukr")
+type = 6
+slot = 7
+
+[sub_resource type="Resource" id="Resource_d4bgn"]
+script = ExtResource("1_phukr")
+type = 5
+slot = 5
+
+[sub_resource type="Resource" id="Resource_kmpbq"]
+script = ExtResource("1_phukr")
+type = 5
+slot = 6
+
+[sub_resource type="Resource" id="Resource_68f3r"]
+script = ExtResource("1_phukr")
+type = 0
+slot = 0
 
 [resource]
-script = ExtResource("1_phukr")
+script = ExtResource("2_anp2j")
+weapon = SubResource("Resource_68f3r")
+helmet = SubResource("Resource_87axf")
+chest = SubResource("Resource_pj88b")
+legs = SubResource("Resource_l8ove")
+boots = SubResource("Resource_dxl8x")
+neckless = SubResource("Resource_pogbc")
+bracelet = SubResource("Resource_6xo5s")
+ring_1 = SubResource("Resource_d4bgn")
+ring_2 = SubResource("Resource_kmpbq")

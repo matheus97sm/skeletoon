@@ -10,4 +10,6 @@ max_health = 100.0
 speed = 600.0
 jump_speed = -650.0
 attack = 10.0
+crit_chance = 0.05
+crit_damage = 1.15
 deffence = 3.0

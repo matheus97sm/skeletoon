@@ -19,8 +19,9 @@ font = ExtResource("2_uhmy7")
 font_size = 32
 
 [node name="ItemSlot" type="PanelContainer"]
-offset_right = 128.0
-offset_bottom = 128.0
+custom_minimum_size = Vector2(72, 72)
+offset_right = 72.0
+offset_bottom = 72.0
 mouse_default_cursor_shape = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_hefsc")
 script = ExtResource("1_dnlht")

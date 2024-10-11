@@ -262,11 +262,11 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(3, 3)
+scale = Vector2(2.3, 2.3)
 script = ExtResource("1_iel22")
 player_base_stats = ExtResource("2_aoalq")
 player_stats = ExtResource("3_b0c8l")
-equipment = ExtResource("4_1sev2")
+equipments = ExtResource("4_1sev2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0.5)

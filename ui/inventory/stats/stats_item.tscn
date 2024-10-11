@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cesmygefv5go7"]
+[gd_scene load_steps=3 format=3 uid="uid://cesmygefv5go7"]
 
 [ext_resource type="Script" path="res://ui/inventory/stats/stats_item.gd" id="1_rhnu6"]
+[ext_resource type="FontFile" uid="uid://gm1u7102clwl" path="res://fonts/Inconsolata-Black.ttf" id="2_sa5nc"]
 
 [node name="StatsItem" type="MarginContainer"]
 script = ExtResource("1_rhnu6")
@@ -12,6 +13,14 @@ theme_override_constants/separation = 10
 [node name="StatsLabel" type="Label" parent="StatsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.509804, 0.203922, 0.203922, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_sa5nc")
 
 [node name="StatsValue" type="Label" parent="StatsContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.509804, 0.203922, 0.203922, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_sa5nc")

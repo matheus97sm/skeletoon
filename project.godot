@@ -28,7 +28,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SignalBus="*res://signals/signal_bus.gd"
+SignalBus="*res://singletons/signal_bus.gd"
+DamageNumbers="*res://singletons/damage_numbers.gd"
+Utils="*res://utils/utils.gd"
+Enums="*res://singletons/enums.gd"
 
 [display]
 
@@ -47,7 +50,8 @@ folder_colors={
 "res://data/characters/enemies/": "red",
 "res://models/": "yellow",
 "res://npcs/": "red",
-"res://player/": "green"
+"res://player/": "green",
+"res://ui/": "pink"
 }
 
 [godot_resource_groups]

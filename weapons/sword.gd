@@ -8,11 +8,14 @@ func _ready() -> void:
 
 
 func update_weapon(equipment: Equipment):
-	if not equipment.weapon:
+	if equipment.type != Enums.EQUIPMENT_TYPE.WEAPON:
+		return
+	
+	if not equipment.item:
 		sword_texture.texture = null
 		return
 	
-	sword_texture.texture = equipment.weapon.texture
+	sword_texture.texture = equipment.item.texture
 
 
 func _on_body_entered(body: CharacterBody2D) -> void:

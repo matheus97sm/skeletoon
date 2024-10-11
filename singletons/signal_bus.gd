@@ -28,7 +28,7 @@ signal item_dropped(item: Item, global_position: Vector2)
 
 # Equipments
 signal equipe_item(item: EquipmentItem)
-signal unequipe_item(item: EquipmentItem)
+signal unequipe_item(item: Equipment)
 signal equipment_updated(equipment: Equipment)
 
 
