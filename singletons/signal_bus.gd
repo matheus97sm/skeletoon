@@ -1,7 +1,17 @@
 extends Node
 
 
+# Player Actions
 signal restore_player_health(quantity: float)
+
+
+# Stats Updates
+signal health_updated(health: float, max_health: float)
+signal stats_updated(player_stats: PlayerStats)
+
+
+# Combat
+signal inflict_damage_to_enemy(enemy: CharacterBody2D)
 
 
 # Inventory
@@ -18,7 +28,7 @@ signal item_dropped(item: Item, global_position: Vector2)
 
 # Equipments
 signal equipe_item(item: EquipmentItem)
-signal remove_item(item: EquipmentItem)
+signal unequipe_item(item: Equipment)
 signal equipment_updated(equipment: Equipment)
 
 

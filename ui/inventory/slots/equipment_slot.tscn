@@ -1,18 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://crjart24n57qg"]
+[gd_scene load_steps=3 format=3 uid="uid://crjart24n57qg"]
 
-[ext_resource type="Texture2D" uid="uid://biqjvnmoghwux" path="res://sprites/ui/ItemSlot.png" id="1_jqmmt"]
-[ext_resource type="Script" path="res://ui/inventory/slots/weapon_slot.gd" id="1_sma57"]
+[ext_resource type="Script" path="res://ui/inventory/slots/equipment_slot.gd" id="2_cr82j"]
+[ext_resource type="Texture2D" uid="uid://lrtuvwyeeym" path="res://sprites/ui/ItemSlot72.png" id="2_qlcvb"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_72ad8"]
-texture = ExtResource("1_jqmmt")
-
-[node name="WeaponSlot" type="PanelContainer"]
+[node name="EquipmentSlot" type="PanelContainer"]
 custom_minimum_size = Vector2(72, 72)
-offset_right = 128.0
-offset_bottom = 128.0
+offset_right = 72.0
+offset_bottom = 72.0
 mouse_default_cursor_shape = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_72ad8")
-script = ExtResource("1_sma57")
+script = ExtResource("2_cr82j")
+
+[node name="SlotTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_qlcvb")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

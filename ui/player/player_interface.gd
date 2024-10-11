@@ -5,10 +5,10 @@ extends Panel
 @onready var player: Player = %Player
 
 
+func _ready() -> void:
+	SignalBus.health_updated.connect(set_health)
+
+
 func set_health(health: int, max_health: int):
 	health_bar.max_value = max_health
 	health_bar.value = health
-
-
-func _on_player_update_health(health: int, max_health: int) -> void:
-	set_health(health, max_health)

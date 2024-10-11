@@ -6,6 +6,9 @@ extends PanelContainer
 var _item: Item
 
 func display_item(item: Item):
+	if not item:
+		return
+	
 	item_texture.texture = item.icon
 	quantity_label.text = str(item.quantity)
 	_item = item
@@ -26,6 +29,9 @@ func _gui_input(event):
 
 
 func handle_double_click():
+	if not _item:
+		return
+	
 	if _item.has_method("use"):
 		_item.call("use", SignalBus)
 	

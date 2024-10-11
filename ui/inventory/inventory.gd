@@ -4,26 +4,61 @@ class_name Inventory
 var _content: Array[Item] = []
 
 
+func _init() -> void:
+	_content.resize(30)
+
+
 func add_item(item: Item) -> void:
+	var index = 0
+	var first_empty_slot = null
+	
 	for _item in _content:
-		if _item.name == item.name:
-			_item.quantity += item.quantity
-			SignalBus.inventory_updated.emit()
-			return
+		index += 1
+		
+		if not _item and first_empty_slot == null:
+			first_empty_slot = index - 1
+			continue
+		
+		if not _item:
+			continue
+		
+		if _item.name != item.name:
+			continue
+		
+		if _item.stack_size == _item.quantity:
+			continue
+		
+		if _item.stack_size < _item.quantity + item.quantity:
+			continue
+		
+		_item.quantity += item.quantity
+		SignalBus.inventory_updated.emit()
+		return
 	
 	var new_item = item.duplicate()
-	_content.append(new_item)
+	_content[first_empty_slot] = new_item
 	
 	SignalBus.inventory_updated.emit()
 
 
 func remove_item(item: Item, quantity: int = 1) -> void:
+	var index = 0
+	
 	for _item in _content:
-		if _item.name == item.name:
-			_item.quantity -= quantity
-			
-			if _item.quantity == 0:
-				_content.erase(_item)
+		index += 1
+		
+		if not _item:
+			continue
+		
+		if _item.name != item.name:
+			continue
+		
+		_item.quantity -= quantity
+		
+		if _item.quantity == 0:
+			_content[index - 1] = null
+		
+		break
 	
 	SignalBus.inventory_updated.emit()
 
@@ -46,6 +81,12 @@ func has_all(items: Array[Item]) -> bool:
 	var needed: Array[Item] = items.duplicate()
 	
 	for available in _content:
+		if needed.size() == 0:
+			break
+		
+		if not available:
+			continue
+		
 		if available.quantity > 1:
 			var removing = 0
 			while removing < available.quantity:

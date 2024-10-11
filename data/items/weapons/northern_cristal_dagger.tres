@@ -7,6 +7,8 @@
 [resource]
 script = ExtResource("1_cl8g8")
 attack = 12.0
+crit_chance = 0.2
+crit_damage = 0.75
 durability = 100.0
 texture = ExtResource("3_wx43x")
 equipment_type = 0

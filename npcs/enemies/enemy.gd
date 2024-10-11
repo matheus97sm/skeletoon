@@ -6,11 +6,17 @@ extends CharacterBody2D
 
 const PICKUP = preload("res://items/pickup/pickup.tscn")
 
+
 func _ready() -> void:
 	update_health_bar()
 
 
-func take_damage(damage: float) -> void:
+func take_damage(damage: float, is_crit: bool = false) -> void:
+	var damage_taken = damage - stats.deffence
+	if damage_taken < 0: damage_taken = 0
+	
+	DamageNumbers.display_number(damage_taken, global_position, is_crit)
+	
 	stats.health -= damage
 	update_health_bar()
 	die()

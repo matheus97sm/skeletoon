@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://61rwis87vh0q"]
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://dyag6tcd2ou6w"]
 
-[ext_resource type="Script" path="res://models/characters/stats.gd" id="1_mb3su"]
+[ext_resource type="Script" path="res://models/characters/player_stats.gd" id="1_mbmlr"]
 
 [resource]
-script = ExtResource("1_mb3su")
+script = ExtResource("1_mbmlr")
+magical_attack = 0.0
 health = 100.0
 max_health = 100.0
-speed = 600.0
-jump_speed = -650.0
-attack = 10.0
-deffence = 3.0
+speed = 0.0
+jump_speed = 0.0
+attack = 0.0
+deffence = 0.0

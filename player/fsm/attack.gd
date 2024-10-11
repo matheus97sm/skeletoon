@@ -1,6 +1,12 @@
 extends PlayerState
 
+
 func enter():
+	var player_weapon = player.equipments.weapon.item
+	
+	if not player_weapon:
+		return
+	
 	player.player_animations.play("attack_sword_1")
 
 
