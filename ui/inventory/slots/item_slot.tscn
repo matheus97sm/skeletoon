@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://betkc2x1ow84"]
+[gd_scene load_steps=8 format=3 uid="uid://betkc2x1ow84"]
 
 [ext_resource type="Texture2D" uid="uid://kkasi2d6632q" path="res://sprites/ui/ItemSlot.png" id="1_5nwg6"]
 [ext_resource type="Script" path="res://ui/inventory/slots/item_slot.gd" id="1_dnlht"]
 [ext_resource type="FontFile" uid="uid://gm1u7102clwl" path="res://fonts/Inconsolata-Black.ttf" id="2_uhmy7"]
+[ext_resource type="Script" path="res://ui/inventory/slots/item_texture.gd" id="3_pqmky"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hefsc"]
 texture = ExtResource("1_5nwg6")
@@ -37,6 +38,7 @@ theme_override_constants/margin_bottom = 3
 [node name="ItemTexture" type="TextureRect" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+script = ExtResource("3_pqmky")
 
 [node name="QuantityLabel" type="Label" parent="MarginContainer"]
 unique_name_in_owner = true
@@ -50,4 +52,5 @@ vertical_alignment = 1
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="MarginContainer/ItemTexture" to="." method="_on_item_texture_mouse_entered"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://mhxssusg6qce"]
+
+[ext_resource type="Script" path="res://npcs/enemies/fsm/fsm.gd" id="1_tqrhj"]
+[ext_resource type="Script" path="res://npcs/enemies/fsm/idle.gd" id="2_q7efa"]
+[ext_resource type="Script" path="res://npcs/enemies/fsm/chase.gd" id="3_e8mtj"]
+
+[node name="FSM" type="Node" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_tqrhj")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource("2_q7efa")
+
+[node name="Chase" type="Node" parent="."]
+script = ExtResource("3_e8mtj")

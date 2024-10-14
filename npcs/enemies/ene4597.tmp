@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://mhxssusg6qce" path="res://npcs/enemies/fsm/fsm.tscn" id="4_vkuo0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kohtc"]
-radius = 14.9848
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vu63h"]
 radius = 33.0151
@@ -89,21 +88,17 @@ _data = {
 [node name="Enemy" type="CharacterBody2D"]
 light_mask = 4
 visibility_layer = 4
-disable_mode = 2
 collision_layer = 4
 script = ExtResource("1_4tyel")
 stats = ExtResource("2_3vsh7")
 
 [node name="ChaseRadius" type="Area2D" parent="."]
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseRadius"]
 scale = Vector2(21.9657, 21.9657)
 shape = SubResource("CircleShape2D_kohtc")
 
 [node name="AttackBox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
 visibility_layer = 0

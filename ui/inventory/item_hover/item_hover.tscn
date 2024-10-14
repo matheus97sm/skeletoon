@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=3 uid="uid://duifm2pvsgax4"]
+
+[ext_resource type="Texture2D" uid="uid://ckbd20rd877wr" path="res://sprites/ui/InventoryBg64.png" id="1_be1st"]
+[ext_resource type="Script" path="res://ui/inventory/item_hover/item_hover.gd" id="1_ee1vt"]
+[ext_resource type="PackedScene" uid="uid://cesmygefv5go7" path="res://ui/inventory/stats/stats_item.tscn" id="2_w7r0v"]
+[ext_resource type="Texture2D" uid="uid://lrtuvwyeeym" path="res://sprites/ui/ItemSlot72.png" id="3_si8nr"]
+[ext_resource type="FontFile" uid="uid://gm1u7102clwl" path="res://fonts/Inconsolata-Black.ttf" id="4_dbbwi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sg5vo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_huvtm"]
+texture = ExtResource("3_si8nr")
+
+[node name="ItemHover" type="Panel"]
+visible = false
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_sg5vo")
+script = ExtResource("1_ee1vt")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+mouse_filter = 2
+
+[node name="BG3" type="NinePatchRect" parent="PanelContainer"]
+layout_mode = 2
+mouse_filter = 0
+texture = ExtResource("1_be1st")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ItemIcon" type="PanelContainer" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_huvtm")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/ItemIcon"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="ItemTexture" type="TextureRect" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/ItemIcon/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ItemName" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.509804, 0.203922, 0.203922, 1)
+theme_override_fonts/font = ExtResource("4_dbbwi")
+theme_override_font_sizes/font_size = 24
+
+[node name="ItemDescription" type="RichTextLabel" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+fit_content = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Stats" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MaxHealth" parent="PanelContainer/VBoxContainer/MarginContainer2/Stats" instance=ExtResource("2_w7r0v")]
+unique_name_in_owner = true
+layout_mode = 2
+label = "Max health"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

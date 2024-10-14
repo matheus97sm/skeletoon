@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 @export var item: Item
 
@@ -12,18 +12,6 @@ var can_pick_up: bool = false
 func _ready() -> void:
 	item_sprite.texture = item.icon
 	SignalBus.get_items_in_player_range.connect(get_items_in_player_range)
-
-
-func _on_body_entered(body: Node2D) -> void:
-	if body.has_method("on_item_picked_up"):
-		player = body
-		SignalBus.add_item_in_player_range.emit(item)
-
-
-func _on_body_exited(body: Node2D) -> void:
-	if body.has_method("on_item_picked_up"):
-		player = null
-		SignalBus.remove_item_from_player_range.emit(item)
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -45,3 +33,13 @@ func get_items_in_player_range(items: Array[Item]):
 	
 	can_pick_up = false
 	press_button.hide()
+
+
+func _on_pickup_area_player_entered_or_exit(_player: CharacterBody2D) -> void:
+	player = _player
+	
+	if _player == null:
+		SignalBus.remove_item_from_player_range.emit(item)
+		return
+	
+	SignalBus.add_item_in_player_range.emit(item)

@@ -20,4 +20,3 @@ func update(delta: float):
 	if Input.is_action_just_pressed("jump"):
 		state_transition.emit(JUMPING)
 		return
-	

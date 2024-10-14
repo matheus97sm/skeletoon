@@ -1,21 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://7bd3r08f21af"]
+[gd_scene load_steps=6 format=3 uid="uid://7bd3r08f21af"]
 
 [ext_resource type="Script" path="res://items/pickup/pickup.gd" id="1_7kxep"]
-[ext_resource type="Resource" uid="uid://ry7mjxs2fb0v" path="res://data/items/consumables/apple.tres" id="2_gpio0"]
+[ext_resource type="Script" path="res://items/pickup/pickup_area.gd" id="2_ogfye"]
 [ext_resource type="PackedScene" uid="uid://bp3y3cqwp1iqf" path="res://ui/labels/actions/press_button.tscn" id="3_plnnw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isoqp"]
+size = Vector2(64, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uqxw5"]
 radius = 41.0122
 
-[node name="Pickup" type="Area2D"]
+[node name="Pickup" type="Node2D"]
 script = ExtResource("1_7kxep")
-item = ExtResource("2_gpio0")
-
-[node name="ItemSprite" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_uqxw5")
 
 [node name="PressButton" parent="." instance=ExtResource("3_plnnw")]
 unique_name_in_owner = true
@@ -38,5 +34,25 @@ label = "Pick item"
 button_label = "F"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 0
+collision_mask = 9
+mass = 40.0
+can_sleep = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_isoqp")
+
+[node name="PickupArea" type="Area2D" parent="RigidBody2D"]
+collision_mask = 2
+script = ExtResource("2_ogfye")
+
+[node name="ItemSprite" type="Sprite2D" parent="RigidBody2D/PickupArea"]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/PickupArea"]
+shape = SubResource("CircleShape2D_uqxw5")
+
+[connection signal="body_entered" from="RigidBody2D/PickupArea" to="RigidBody2D/PickupArea" method="_on_body_entered"]
+[connection signal="body_exited" from="RigidBody2D/PickupArea" to="RigidBody2D/PickupArea" method="_on_body_exited"]
+[connection signal="player_entered_or_exit" from="RigidBody2D/PickupArea" to="." method="_on_pickup_area_player_entered_or_exit"]

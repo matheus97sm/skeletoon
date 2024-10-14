@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bhk1demf0ykmt"]
 
-[ext_resource type="Script" path="res://ui/item_menu/item_menu.gd" id="1_y585u"]
+[ext_resource type="Script" path="res://ui/inventory/item_menu/item_menu.gd" id="1_y585u"]
 
 [node name="ItemMenu" type="Panel"]
 z_index = 100

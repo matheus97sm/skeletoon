@@ -55,13 +55,13 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_kvxmc"]
 resource_name = "attack_sword_1"
 length = 0.6
-step = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -69,7 +69,7 @@ tracks/0/path = NodePath("Skeletoon/SkeletoonSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [15, 16, 17, 18, 19, 20]
@@ -81,7 +81,7 @@ tracks/1/path = NodePath("Skeletoon/SkeletoonRightArm:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [15, 16, 17, 18, 19, 20]
@@ -93,7 +93,7 @@ tracks/2/path = NodePath("Skeletoon/Sword/Weapon:position")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-6, -2), Vector2(-4, -2), Vector2(0, -2), Vector2(-7, -3), Vector2(1, -10), Vector2(17, 4)]
@@ -105,7 +105,7 @@ tracks/3/path = NodePath("Skeletoon/Sword/Weapon:rotation")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.122041, -2.2169, -0.927833, 0.773245]
@@ -117,10 +117,10 @@ tracks/4/path = NodePath("Skeletoon/Sword/Weapon:collision_mask")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
+"times": PackedFloat32Array(0, 0.15, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 5, 0]
+"values": [0, 4, 0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -129,7 +129,7 @@ tracks/5/path = NodePath("Skeletoon/Sword/SwordSlash1:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0.15, 0.2, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -141,7 +141,7 @@ tracks/6/path = NodePath("Skeletoon/Sword/SwordSlash2:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.4, 0.5, 0.6),
+"times": PackedFloat32Array(0.2, 0.25, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -263,6 +263,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(2.3, 2.3)
+collision_layer = 2
 script = ExtResource("1_iel22")
 player_base_stats = ExtResource("2_aoalq")
 player_stats = ExtResource("3_b0c8l")

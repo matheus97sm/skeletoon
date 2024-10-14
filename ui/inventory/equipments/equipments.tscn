@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c563mcquvr71f"]
+
+[ext_resource type="Script" path="res://ui/inventory/equipments/equipments.gd" id="1_7rxt2"]
+
+[node name="Equipments" type="GridContainer"]
+size_flags_vertical = 0
+theme_override_constants/v_separation = -1
+script = ExtResource("1_7rxt2")

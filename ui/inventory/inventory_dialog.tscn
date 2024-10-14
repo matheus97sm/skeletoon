@@ -1,17 +1,72 @@
-[gd_scene load_steps=22 format=3 uid="uid://htmdpu5ipxrs"]
+[gd_scene load_steps=37 format=3 uid="uid://htmdpu5ipxrs"]
 
 [ext_resource type="Script" path="res://ui/inventory/inventory_dialog.gd" id="1_0m63s"]
 [ext_resource type="PackedScene" uid="uid://betkc2x1ow84" path="res://ui/inventory/slots/item_slot.tscn" id="2_koc1t"]
 [ext_resource type="PackedScene" uid="uid://cesmygefv5go7" path="res://ui/inventory/stats/stats_item.tscn" id="3_87udi"]
 [ext_resource type="Texture2D" uid="uid://ckbd20rd877wr" path="res://sprites/ui/InventoryBg64.png" id="3_g45dr"]
 [ext_resource type="PackedScene" uid="uid://dyp7udmlq4tfs" path="res://player/dumb/player_dumb.tscn" id="3_j05aa"]
-[ext_resource type="PackedScene" uid="uid://coc2u8t0cwcx6" path="res://ui/item_grid/item_grid.tscn" id="3_vh2hx"]
-[ext_resource type="PackedScene" uid="uid://bhk1demf0ykmt" path="res://ui/item_menu/item_menu.tscn" id="4_3arqg"]
+[ext_resource type="PackedScene" uid="uid://coc2u8t0cwcx6" path="res://ui/inventory/item_grid/item_grid.tscn" id="3_vh2hx"]
+[ext_resource type="PackedScene" uid="uid://bhk1demf0ykmt" path="res://ui/inventory/item_menu/item_menu.tscn" id="4_3arqg"]
 [ext_resource type="PackedScene" uid="uid://crjart24n57qg" path="res://ui/inventory/slots/equipment_slot.tscn" id="4_nhm1n"]
-[ext_resource type="PackedScene" uid="uid://c563mcquvr71f" path="res://ui/inventory/equipments/armor_equipments.tscn" id="5_ky2rn"]
+[ext_resource type="PackedScene" uid="uid://c563mcquvr71f" path="res://ui/inventory/equipments/equipments.tscn" id="5_ky2rn"]
+[ext_resource type="Script" path="res://models/ui/equipment_slot.gd" id="6_3usga"]
+[ext_resource type="Texture2D" uid="uid://cqews2f0f7omv" path="res://sprites/ui/ArmorHelmet72.png" id="7_uy5bd"]
 [ext_resource type="FontFile" uid="uid://gm1u7102clwl" path="res://fonts/Inconsolata-Black.ttf" id="8_1xfqf"]
+[ext_resource type="Texture2D" uid="uid://cr6v6t35q72v" path="res://sprites/ui/ArmorChest72.png" id="8_s7mnl"]
+[ext_resource type="Texture2D" uid="uid://do1l1lhbwrtl2" path="res://sprites/ui/ArmorLegs72.png" id="9_aqhf4"]
+[ext_resource type="Texture2D" uid="uid://4a1idsdtwj2v" path="res://sprites/ui/ArmorBoots72.png" id="10_rj5p8"]
+[ext_resource type="Texture2D" uid="uid://ye6d3rr4a7dt" path="res://sprites/ui/RingSlot72.png" id="12_xltsj"]
+[ext_resource type="PackedScene" uid="uid://duifm2pvsgax4" path="res://ui/inventory/item_hover/item_hover.tscn" id="16_k8yl6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fgrur"]
+
+[sub_resource type="Resource" id="Resource_ihawm"]
+script = ExtResource("6_3usga")
+equipment_type = 1
+equipment_slot = 1
+equipment_slot_texture = ExtResource("7_uy5bd")
+
+[sub_resource type="Resource" id="Resource_mjif2"]
+script = ExtResource("6_3usga")
+equipment_type = 2
+equipment_slot = 2
+equipment_slot_texture = ExtResource("8_s7mnl")
+
+[sub_resource type="Resource" id="Resource_wlpnx"]
+script = ExtResource("6_3usga")
+equipment_type = 4
+equipment_slot = 4
+equipment_slot_texture = ExtResource("9_aqhf4")
+
+[sub_resource type="Resource" id="Resource_7gtyr"]
+script = ExtResource("6_3usga")
+equipment_type = 3
+equipment_slot = 3
+equipment_slot_texture = ExtResource("10_rj5p8")
+
+[sub_resource type="Resource" id="Resource_medb6"]
+script = ExtResource("6_3usga")
+equipment_type = 6
+equipment_slot = 7
+equipment_slot_texture = ExtResource("12_xltsj")
+
+[sub_resource type="Resource" id="Resource_8g8eo"]
+script = ExtResource("6_3usga")
+equipment_type = 7
+equipment_slot = 8
+equipment_slot_texture = ExtResource("12_xltsj")
+
+[sub_resource type="Resource" id="Resource_yrcuu"]
+script = ExtResource("6_3usga")
+equipment_type = 5
+equipment_slot = 5
+equipment_slot_texture = ExtResource("12_xltsj")
+
+[sub_resource type="Resource" id="Resource_168i4"]
+script = ExtResource("6_3usga")
+equipment_type = 5
+equipment_slot = 6
+equipment_slot_texture = ExtResource("12_xltsj")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ak1uh"]
 bg_color = Color(0.933333, 0.807843, 0.701961, 1)
@@ -269,6 +324,7 @@ layout_mode = 2
 
 [node name="ArmorEquipments" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor" instance=ExtResource("5_ky2rn")]
 layout_mode = 2
+equipment_slots = Array[ExtResource("6_3usga")]([SubResource("Resource_ihawm"), SubResource("Resource_mjif2"), SubResource("Resource_wlpnx"), SubResource("Resource_7gtyr")])
 
 [node name="PanelContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor"]
 custom_minimum_size = Vector2(150, 200)
@@ -279,22 +335,9 @@ size_flags_vertical = 0
 [node name="PlayerDumb" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor/PanelContainer" instance=ExtResource("3_j05aa")]
 position = Vector2(72, 135)
 
-[node name="RightEquipments" type="GridContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor"]
+[node name="AccessoriesEquipments2" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor" instance=ExtResource("5_ky2rn")]
 layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/v_separation = -1
-
-[node name="ItemSlot" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor/RightEquipments" instance=ExtResource("2_koc1t")]
-layout_mode = 2
-
-[node name="ItemSlot2" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor/RightEquipments" instance=ExtResource("2_koc1t")]
-layout_mode = 2
-
-[node name="ItemSlot3" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor/RightEquipments" instance=ExtResource("2_koc1t")]
-layout_mode = 2
-
-[node name="ItemSlot4" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor/RightEquipments" instance=ExtResource("2_koc1t")]
-layout_mode = 2
+equipment_slots = Array[ExtResource("6_3usga")]([SubResource("Resource_medb6"), SubResource("Resource_8g8eo"), SubResource("Resource_yrcuu"), SubResource("Resource_168i4")])
 
 [node name="Weapons" type="GridContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments"]
 layout_mode = 2
@@ -387,6 +430,9 @@ text = "X"
 [node name="Control" type="Container" parent="."]
 layout_mode = 2
 mouse_filter = 2
+
+[node name="ItemHover" parent="Control" instance=ExtResource("16_k8yl6")]
+layout_mode = 2
 
 [node name="ItemMenu" parent="Control" instance=ExtResource("4_3arqg")]
 unique_name_in_owner = true

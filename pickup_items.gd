@@ -5,6 +5,8 @@ var items_in_player_range: Array[Item]
 
 const PICKUP = preload("res://items/pickup/pickup.tscn")
 
+@onready var player: Player = %Player
+
 
 func _ready() -> void:
 	SignalBus.item_dropped.connect(spawn_item)
@@ -17,6 +19,10 @@ func spawn_item(item: Item, _global_position: Vector2):
 	new_pickup_item.item = item
 	add_child(new_pickup_item)
 	new_pickup_item.global_position = _global_position
+
+
+func spawn_item_on_player_location(item: Item):
+	spawn_item(item, player.global_position)
 
 
 func add_item_in_player_range(item: Item):

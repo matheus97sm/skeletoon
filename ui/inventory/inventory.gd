@@ -5,8 +5,8 @@ var _content: Array[Item] = []
 
 
 func _init() -> void:
-	_content.resize(30)
-
+	_content.resize(42)
+	SignalBus.change_item_position.connect(update_item)
 
 func add_item(item: Item) -> void:
 	var index = 0
@@ -41,6 +41,15 @@ func add_item(item: Item) -> void:
 	SignalBus.inventory_updated.emit()
 
 
+func update_item(item: Item, old_position: int, new_position: int):
+	var item_to_be_swapped = _content[new_position]
+	_content[new_position] = item
+	
+	_content[old_position] = item_to_be_swapped
+	
+	SignalBus.inventory_updated.emit()
+
+
 func remove_item(item: Item, quantity: int = 1) -> void:
 	var index = 0
 	
@@ -70,6 +79,9 @@ func get_items() -> Array[Item]:
 func get_item_by_name(item_name: String) -> Item:
 	var found_item
 	for item in _content:
+		if not item:
+			continue
+		
 		if item.name == item_name:
 			found_item = item
 			break

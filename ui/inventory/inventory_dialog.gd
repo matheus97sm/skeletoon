@@ -6,7 +6,6 @@ class_name InventoryDialog
 
 @onready var items_grid: ItemGrid = %ItemsGrid
 @onready var item_menu: Panel = %ItemMenu
-@onready var health: MarginContainer = %Health
 @onready var max_health: MarginContainer = %MaxHealth
 @onready var attack: MarginContainer = %Attack
 @onready var crit_chance: MarginContainer = %CritChance
@@ -21,6 +20,7 @@ func _ready() -> void:
 	SignalBus.stats_updated.connect(stats_updated)
 	SignalBus.inventory_updated.connect(update)
 	SignalBus.open_inventory_item_menu.connect(open_inventory_item_menu)
+	SignalBus.change_item_position.connect(update_item_position)
 
 
 func open(inventory: Inventory):
@@ -48,10 +48,14 @@ func stats_updated(player_stats: PlayerStats):
 	deffence.set_value(str(player_stats.deffence))
 
 
-func _on_close_button_pressed() -> void:
-	hide()
-
-
 func open_inventory_item_menu(item: Item, mouse_global_position: Vector2) -> void:
 	item_menu.start(item)
 	item_menu.global_position = mouse_global_position
+
+
+func update_item_position(item: Item):
+	print(item)
+
+
+func _on_close_button_pressed() -> void:
+	hide()

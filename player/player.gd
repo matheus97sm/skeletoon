@@ -8,8 +8,10 @@ class_name Player extends CharacterBody2D
 @onready var player_animations: AnimationPlayer = %PlayerAnimations
 
 var inventory: Inventory = Inventory.new()
+var gold: int = 0
 var gravity = 1400
 var player_utils = PlayerUtils.new()
+
 
 func _ready() -> void:
 	await owner.ready
@@ -35,21 +37,28 @@ func update_player_stats():
 	SignalBus.stats_updated.emit(player_stats)
 
 
+func update_player_health(new_health: float, max_health: float = player_stats.max_health):
+	player_stats.health = new_health
+	SignalBus.health_updated.emit(player_stats.health, player_stats.max_health)
+	
+
+
 # Player Actions
 func heal_player(quantity: float):
 	var new_health = player_stats.health + quantity
 	
 	if new_health >= player_stats.max_health:
-		player_stats.health = player_stats.max_health
-		SignalBus.health_updated.emit(player_stats.health, player_stats.max_health)
+		update_player_health(player_stats.max_health)
 		return
 	
-	player_stats.health = new_health
-	SignalBus.health_updated.emit(player_stats.health, player_stats.max_health)
+	update_player_health(new_health)
 
 
 #Combat
 func inflict_damage_to_enemy(enemy: CharacterBody2D):
+	if enemy == self:
+		return
+	
 	if not enemy.has_method("take_damage"):
 		print("It looks like this is not an enemy.")
 		return
@@ -62,6 +71,17 @@ func inflict_damage_to_enemy(enemy: CharacterBody2D):
 	if is_crit: damage = damage * player_stats.crit_damage
 	
 	enemy.take_damage(damage, is_crit)
+
+
+func take_damage(damage: float):
+	var damage_taken = damage - player_stats.deffence
+	
+	if damage_taken <= 0:
+		return
+	
+	var new_health = player_stats.health - damage_taken
+	update_player_health(new_health)
+	DamageNumbers.display_number(damage_taken, global_position, true)
 
 
 # Inventory

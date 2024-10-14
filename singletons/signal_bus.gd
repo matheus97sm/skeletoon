@@ -17,6 +17,9 @@ signal inflict_damage_to_enemy(enemy: CharacterBody2D)
 # Inventory
 signal remove_item_from_inventory(item_name: String, quantity: int)
 signal inventory_updated
+signal change_item_position(item: Item, old_postion: int, new_position: int)
+signal item_hovered(item: Item, item_global_position: Vector2)
+signal item_unhovered()
 
 
 # Items
