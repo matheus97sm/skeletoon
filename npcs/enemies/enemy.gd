@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var attack_cooldown: float = 1
 
 @onready var health_bar: ProgressBar = %HealthBar
+@onready var enemy_sprite: Node2D = %EnemySprite
+@onready var attack_box: Area2D = %AttackBox
 
 var can_attack: bool = true
 var attack_targets: Array[CharacterBody2D]
@@ -67,6 +69,10 @@ func set_can_attack():
 	applies_attack()
 
 
+func flip_enemy(new_scale: Vector2) -> void:
+	enemy_sprite.scale = new_scale
+
+
 func _on_attack_box_body_entered(body: CharacterBody2D) -> void:
 	if body is not Player: return
 	
@@ -90,3 +96,11 @@ func _on_chase_radius_body_exited(body: Node2D) -> void:
 	if body is Player:
 		chase_target = null
 		target_on_chase_radius.emit()
+
+
+func toggle_attack_box(disable := false) -> void:
+	if disable:
+		attack_box.collision_mask = 0
+		return
+	
+	attack_box.collision_mask = 2

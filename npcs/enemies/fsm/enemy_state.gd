@@ -6,6 +6,7 @@ var enemy: CharacterBody2D
 
 const IDLE = "idle"
 const CHASE = "chase"
+const ATTACK = "attack"
 
 
 func _ready() -> void:

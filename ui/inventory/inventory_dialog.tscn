@@ -298,7 +298,7 @@ unique_name_in_owner = true
 layout_mode = 2
 label = "Speed"
 
-[node name="EquipmentContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+[node name="EquipmentContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
 [node name="BG" type="NinePatchRect" parent="MarginContainer/HBoxContainer/EquipmentContainer"]
@@ -309,37 +309,40 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/CenterContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Equipments" type="VBoxContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2"]
+[node name="Equipments" type="VBoxContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/CenterContainer/MarginContainer2"]
 layout_mode = 2
 
-[node name="Armor" type="HBoxContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments"]
+[node name="Armor" type="HBoxContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/CenterContainer/MarginContainer2/Equipments"]
 layout_mode = 2
 
-[node name="ArmorEquipments" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor" instance=ExtResource("5_ky2rn")]
+[node name="ArmorEquipments" parent="MarginContainer/HBoxContainer/EquipmentContainer/CenterContainer/MarginContainer2/Equipments/Armor" instance=ExtResource("5_ky2rn")]
 layout_mode = 2
 equipment_slots = Array[ExtResource("6_3usga")]([SubResource("Resource_ihawm"), SubResource("Resource_mjif2"), SubResource("Resource_wlpnx"), SubResource("Resource_7gtyr")])
 
-[node name="PanelContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor"]
+[node name="PanelContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/CenterContainer/MarginContainer2/Equipments/Armor"]
 custom_minimum_size = Vector2(150, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="PlayerDumb" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor/PanelContainer" instance=ExtResource("3_j05aa")]
+[node name="PlayerDumb" parent="MarginContainer/HBoxContainer/EquipmentContainer/CenterContainer/MarginContainer2/Equipments/Armor/PanelContainer" instance=ExtResource("3_j05aa")]
 position = Vector2(72, 135)
 
-[node name="AccessoriesEquipments2" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Armor" instance=ExtResource("5_ky2rn")]
+[node name="AccessoriesEquipments2" parent="MarginContainer/HBoxContainer/EquipmentContainer/CenterContainer/MarginContainer2/Equipments/Armor" instance=ExtResource("5_ky2rn")]
 layout_mode = 2
 equipment_slots = Array[ExtResource("6_3usga")]([SubResource("Resource_medb6"), SubResource("Resource_8g8eo"), SubResource("Resource_yrcuu"), SubResource("Resource_168i4")])
 
-[node name="Weapons" type="GridContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments"]
+[node name="Weapons" type="GridContainer" parent="MarginContainer/HBoxContainer/EquipmentContainer/CenterContainer/MarginContainer2/Equipments"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -347,13 +350,13 @@ theme_override_constants/h_separation = -1
 theme_override_constants/v_separation = 0
 columns = 3
 
-[node name="WeaponSlot" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Weapons" instance=ExtResource("4_nhm1n")]
+[node name="WeaponSlot" parent="MarginContainer/HBoxContainer/EquipmentContainer/CenterContainer/MarginContainer2/Equipments/Weapons" instance=ExtResource("4_nhm1n")]
 layout_mode = 2
 
-[node name="ItemSlot2" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Weapons" instance=ExtResource("2_koc1t")]
+[node name="ItemSlot2" parent="MarginContainer/HBoxContainer/EquipmentContainer/CenterContainer/MarginContainer2/Equipments/Weapons" instance=ExtResource("2_koc1t")]
 layout_mode = 2
 
-[node name="ItemSlot3" parent="MarginContainer/HBoxContainer/EquipmentContainer/MarginContainer2/Equipments/Weapons" instance=ExtResource("2_koc1t")]
+[node name="ItemSlot3" parent="MarginContainer/HBoxContainer/EquipmentContainer/CenterContainer/MarginContainer2/Equipments/Weapons" instance=ExtResource("2_koc1t")]
 layout_mode = 2
 
 [node name="InventoryContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]

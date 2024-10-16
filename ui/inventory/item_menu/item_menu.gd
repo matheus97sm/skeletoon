@@ -33,7 +33,7 @@ func start(item: Item):
 
 func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
 	var clicked_method = methods[index]
-	_item.call(clicked_method, SignalBus, _item)
+	_item.call(clicked_method, SignalBus)
 	
 	clear()
 

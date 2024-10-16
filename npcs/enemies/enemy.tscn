@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://f3pir5lw6ngo"]
+[gd_scene load_steps=16 format=3 uid="uid://f3pir5lw6ngo"]
 
 [ext_resource type="Script" path="res://npcs/enemies/enemy.gd" id="1_4tyel"]
 [ext_resource type="Resource" uid="uid://bxhhmf8yiteyc" path="res://data/characters/enemies/giant_apple.tres" id="2_3vsh7"]
@@ -31,29 +31,12 @@ corner_radius_bottom_left = 6
 [sub_resource type="CircleShape2D" id="CircleShape2D_gb83h"]
 radius = 31.0644
 
-[sub_resource type="Animation" id="Animation_66b2k"]
-resource_name = "idle"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.261799, -0.261799, 0.0]
-}
-
 [sub_resource type="Animation" id="Animation_2sgdh"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/path = NodePath("EnemySprite/Sprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -63,13 +46,16 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_hi2i7"]
+resource_name = "attack"
+
 [sub_resource type="Animation" id="Animation_fdfxs"]
 resource_name = "chase"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/path = NodePath("EnemySprite/Sprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -79,9 +65,27 @@ tracks/0/keys = {
 "values": [0.0, 6.28319]
 }
 
+[sub_resource type="Animation" id="Animation_66b2k"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.261799, -0.261799, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5fjy2"]
 _data = {
 "RESET": SubResource("Animation_2sgdh"),
+"attack": SubResource("Animation_hi2i7"),
 "chase": SubResource("Animation_fdfxs"),
 "idle": SubResource("Animation_66b2k")
 }
@@ -93,6 +97,13 @@ disable_mode = 2
 collision_layer = 4
 script = ExtResource("1_4tyel")
 stats = ExtResource("2_3vsh7")
+attack_cooldown = 2.0
+
+[node name="EnemySprite" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemySprite"]
+texture = ExtResource("2_ff30a")
 
 [node name="ChaseRadius" type="Area2D" parent="."]
 collision_mask = 3
@@ -102,6 +113,7 @@ scale = Vector2(21.9657, 21.9657)
 shape = SubResource("CircleShape2D_kohtc")
 
 [node name="AttackBox" type="Area2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 2
 
@@ -109,9 +121,6 @@ collision_mask = 2
 visibility_layer = 0
 shape = SubResource("CircleShape2D_vu63h")
 debug_color = Color(0.964706, 0, 0, 0.419608)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ff30a")
 
 [node name="HurtBox" type="Area2D" parent="."]
 light_mask = 0
