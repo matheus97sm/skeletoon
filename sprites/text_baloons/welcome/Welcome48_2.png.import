@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dskw12nxcj5g3"
-path="res://.godot/imported/LootBag.png-2e9520920b748a09566aada910265f62.ctex"
+uid="uid://7qu07cdtdj4h"
+path="res://.godot/imported/Welcome48_2.png-ab45d23176580e02b9eedb31037ba833.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/world_objects/LootBag.png"
-dest_files=["res://.godot/imported/LootBag.png-2e9520920b748a09566aada910265f62.ctex"]
+source_file="res://sprites/text_baloons/welcome/Welcome48_2.png"
+dest_files=["res://.godot/imported/Welcome48_2.png-ab45d23176580e02b9eedb31037ba833.ctex"]
 
 [params]
 
