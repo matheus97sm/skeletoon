@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwrrpioghbotc"
-path="res://.godot/imported/ClosedBox.png-c47fdaea8399d85dffc247a7a10740aa.ctex"
+uid="uid://7qu07cdtdj4h"
+path="res://.godot/imported/Welcome48_2.png-ab45d23176580e02b9eedb31037ba833.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/world_objects/ClosedBox.png"
-dest_files=["res://.godot/imported/ClosedBox.png-c47fdaea8399d85dffc247a7a10740aa.ctex"]
+source_file="res://sprites/text_baloons/welcome/Welcome48_2.png"
+dest_files=["res://.godot/imported/Welcome48_2.png-ab45d23176580e02b9eedb31037ba833.ctex"]
 
 [params]
 

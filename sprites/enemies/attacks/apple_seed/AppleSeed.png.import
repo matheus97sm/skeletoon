@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s81bkyra5hnk"
-path="res://.godot/imported/ClosedBox128.png-ade2456c4bb7e16aeb331b67e424620b.ctex"
+uid="uid://cft1thjoilrwb"
+path="res://.godot/imported/AppleSeed.png-d47101a701ca0ae6dddea4e206c2e1ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/world_objects/ClosedBox128.png"
-dest_files=["res://.godot/imported/ClosedBox128.png-ade2456c4bb7e16aeb331b67e424620b.ctex"]
+source_file="res://sprites/enemies/attacks/apple_seed/AppleSeed.png"
+dest_files=["res://.godot/imported/AppleSeed.png-d47101a701ca0ae6dddea4e206c2e1ac.ctex"]
 
 [params]
 
