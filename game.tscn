@@ -43,8 +43,8 @@ health_restore = 10
 name = "Apple"
 icon = ExtResource("6_ybvbt")
 price = 5
-quantity = null
-stack_size = null
+quantity = 1
+stack_size = 99
 hover_text = "A delicious apple that will restore {} life points."
 description = "The most beautiful apple that you ever seen. It may have falled from the elder tree."
 
@@ -54,8 +54,8 @@ health_restore = 10
 name = "Apple"
 icon = ExtResource("6_ybvbt")
 price = 5
-quantity = null
-stack_size = null
+quantity = 1
+stack_size = 99
 hover_text = "A delicious apple that will restore {} life points."
 description = "The most beautiful apple that you ever seen. It may have falled from the elder tree."
 
@@ -65,8 +65,8 @@ health_restore = 10
 name = "Apple"
 icon = ExtResource("6_ybvbt")
 price = 5
-quantity = null
-stack_size = null
+quantity = 1
+stack_size = 99
 hover_text = "A delicious apple that will restore {} life points."
 description = "The most beautiful apple that you ever seen. It may have falled from the elder tree."
 
@@ -76,8 +76,8 @@ health_restore = 10
 name = "Apple"
 icon = ExtResource("6_ybvbt")
 price = 5
-quantity = null
-stack_size = null
+quantity = 1
+stack_size = 99
 hover_text = "A delicious apple that will restore {} life points."
 description = "The most beautiful apple that you ever seen. It may have falled from the elder tree."
 
