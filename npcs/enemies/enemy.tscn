@@ -1,9 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://f3pir5lw6ngo"]
+[gd_scene load_steps=21 format=3 uid="uid://f3pir5lw6ngo"]
 
 [ext_resource type="Script" path="res://npcs/enemies/enemy.gd" id="1_4tyel"]
 [ext_resource type="Resource" uid="uid://bxhhmf8yiteyc" path="res://data/characters/enemies/giant_apple.tres" id="2_3vsh7"]
 [ext_resource type="Texture2D" uid="uid://ggin332s2ako" path="res://sprites/consumables/GoldenApple.png" id="2_ff30a"]
+[ext_resource type="Shader" path="res://npcs/enemies/enemy.gdshader" id="3_rvl0d"]
 [ext_resource type="PackedScene" uid="uid://mhxssusg6qce" path="res://npcs/enemies/fsm/fsm.tscn" id="4_vkuo0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ik178"]
+shader = ExtResource("3_rvl0d")
+shader_parameter/active = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kohtc"]
 radius = 23.4005
@@ -44,6 +49,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprite/Sprite2D:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_hi2i7"]
@@ -90,6 +107,43 @@ _data = {
 "idle": SubResource("Animation_66b2k")
 }
 
+[sub_resource type="Animation" id="Animation_c7ygc"]
+resource_name = "hurted"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite/Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_wl8mn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite/Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uw1wq"]
+_data = {
+"RESET": SubResource("Animation_wl8mn"),
+"hurted": SubResource("Animation_c7ygc")
+}
+
 [node name="Enemy" type="CharacterBody2D"]
 light_mask = 4
 visibility_layer = 4
@@ -107,6 +161,7 @@ unique_name_in_owner = true
 position = Vector2(22, -30)
 
 [node name="Sprite2D" type="Sprite2D" parent="EnemySprite"]
+material = SubResource("ShaderMaterial_ik178")
 texture = ExtResource("2_ff30a")
 
 [node name="ChaseRadius" type="Area2D" parent="."]
@@ -155,6 +210,12 @@ shape = SubResource("CircleShape2D_gb83h")
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_5fjy2")
+}
+
+[node name="SpriteAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_uw1wq")
 }
 
 [node name="FSM" parent="." node_paths=PackedStringArray("enemy", "animation_player") instance=ExtResource("4_vkuo0")]
