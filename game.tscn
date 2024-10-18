@@ -96,8 +96,16 @@ position = Vector2(265, 504)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.15, 1.15)
 
-[node name="ClosedBox" parent="." instance=ExtResource("3_i7dxf")]
-position = Vector2(879, 550)
+[node name="Scenery" type="Node2D" parent="."]
+
+[node name="ClosedBox3" parent="Scenery" instance=ExtResource("3_i7dxf")]
+position = Vector2(907, 532)
+
+[node name="ClosedBox" parent="Scenery" instance=ExtResource("3_i7dxf")]
+position = Vector2(879, 567)
+
+[node name="ClosedBox2" parent="Scenery" instance=ExtResource("3_i7dxf")]
+position = Vector2(913, 567)
 
 [node name="PickupItems" type="Node2D" parent="."]
 unique_name_in_owner = true

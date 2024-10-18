@@ -6,8 +6,10 @@ extends CharacterBody2D
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var enemy_sprite: Node2D = %EnemySprite
 @onready var attack_box: Area2D = %AttackBox
+@onready var projectile_spawn_point: Marker2D = %ProjectileSpawnPoint
 
 var can_attack: bool = true
+var is_attacks_on_cooldown: bool = false
 var attack_targets: Array[CharacterBody2D]
 var chase_target: CharacterBody2D
 
@@ -98,7 +100,11 @@ func _on_chase_radius_body_exited(body: Node2D) -> void:
 		target_on_chase_radius.emit()
 
 
-func toggle_attack_box(disable := false) -> void:
+func toggle_is_attacks_on_cooldown(is_on_cooldown := false):
+	is_attacks_on_cooldown = is_on_cooldown
+
+
+func disable_attack_box(disable := false) -> void:
 	if disable:
 		attack_box.collision_mask = 0
 		return

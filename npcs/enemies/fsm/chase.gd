@@ -17,15 +17,16 @@ func update(delta: float):
 	if enemy_is_on_left:
 		direction = -1
 	
-	
 	enemy.velocity.x = direction * enemy.stats.speed
 	enemy.move_and_slide()
 	
 	var distance_from_player = abs(enemy.chase_target.global_position.x - enemy.global_position.x)
 	
-	if distance_from_player <= 200:
-		state_transition.emit(ATTACK)
-		return
-	
 	if distance_from_player > 5 or distance_from_player < -5: 
 		enemy.flip_enemy(Vector2(direction, 1))
+	
+	if enemy.is_attacks_on_cooldown:
+		return
+	
+	if distance_from_player <= 400:
+		state_transition.emit(ATTACK)
