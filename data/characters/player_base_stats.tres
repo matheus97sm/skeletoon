@@ -5,11 +5,12 @@
 [resource]
 script = ExtResource("1_jcsey")
 magical_attack = 0.0
+dash_speed = 800.0
 health = 100.0
 max_health = 100.0
-speed = 600.0
+speed = 400.0
 jump_speed = -650.0
 attack = 10.0
-crit_chance = 0.05
-crit_damage = 1.15
-deffence = 3.0
+crit_chance = 0.0
+crit_damage = 1.0
+deffence = 1.0

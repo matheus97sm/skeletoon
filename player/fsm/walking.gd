@@ -19,6 +19,10 @@ func update(delta: float):
 		state_transition.emit(ATTACK)
 		return
 	
+	if Input.is_action_just_pressed("dash"):
+		state_transition.emit(DASHING)
+		return
+	
 	if not Input.is_action_pressed("move_left") and not Input.is_action_pressed("move_right"):
 		state_transition.emit(IDLE)
 		return
