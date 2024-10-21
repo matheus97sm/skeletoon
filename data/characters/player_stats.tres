@@ -5,7 +5,6 @@
 [resource]
 script = ExtResource("1_mbmlr")
 magical_attack = 0.0
-dash_speed = 500.0
 health = 50.0
 max_health = 50.0
 speed = 200.0
