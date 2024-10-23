@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://mhxssusg6qce"]
+[gd_scene load_steps=8 format=3 uid="uid://mhxssusg6qce"]
 
 [ext_resource type="Script" path="res://npcs/enemies/fsm/fsm.gd" id="1_tqrhj"]
 [ext_resource type="Script" path="res://npcs/enemies/fsm/idle.gd" id="2_q7efa"]
 [ext_resource type="Script" path="res://npcs/enemies/fsm/chase.gd" id="3_e8mtj"]
 [ext_resource type="Script" path="res://npcs/enemies/fsm/attack.gd" id="4_pm06t"]
+[ext_resource type="Script" path="res://npcs/enemies/fsm/attacks/tackle.gd" id="5_kdwkw"]
+[ext_resource type="Script" path="res://npcs/enemies/fsm/attacks/shot.gd" id="6_ornaa"]
+[ext_resource type="PackedScene" uid="uid://dvg4urlehorwn" path="res://npcs/enemies/apple/seed_attack/projectile.tscn" id="7_v3hwc"]
 
 [node name="FSM" type="Node" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_tqrhj")
@@ -17,3 +20,12 @@ script = ExtResource("3_e8mtj")
 
 [node name="Attack" type="Node" parent="."]
 script = ExtResource("4_pm06t")
+
+[node name="Tackle" type="Node" parent="Attack"]
+script = ExtResource("5_kdwkw")
+
+[node name="Shot" type="Node" parent="Attack"]
+script = ExtResource("6_ornaa")
+shot_scene = ExtResource("7_v3hwc")
+projectile_speed = 400.0
+projectile_max_travel_distance = 800.0

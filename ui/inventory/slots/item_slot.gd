@@ -56,7 +56,7 @@ func handle_double_click():
 		return
 	
 	if _item.has_method("use"):
-		_item.call("use", SignalBus)
+		_item.call("use", SignalBus, _item)
 	
 	if _item.has_method("equipe_item"):
 		_item.call("equipe_item", SignalBus, _item)

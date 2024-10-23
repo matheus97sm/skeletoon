@@ -6,14 +6,19 @@ extends CharacterBody2D
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var enemy_sprite: Node2D = %EnemySprite
 @onready var attack_box: Area2D = %AttackBox
+@onready var projectile_spawn_point: Marker2D = %ProjectileSpawnPoint
+@onready var sprite_animation_player: AnimationPlayer = %SpriteAnimationPlayer
 
 var can_attack: bool = true
+var is_attacks_on_cooldown: bool = false
 var attack_targets: Array[CharacterBody2D]
 var chase_target: CharacterBody2D
 
 const PICKUP = preload("res://items/pickup/pickup.tscn")
 
 signal target_on_chase_radius
+signal damage_received
+signal died
 
 
 func _ready() -> void:
@@ -21,12 +26,14 @@ func _ready() -> void:
 
 
 func take_damage(damage: float, is_crit: bool = false) -> void:
+	sprite_animation_player.play('hurted')
 	var damage_taken = damage - stats.deffence
 	if damage_taken < 0: damage_taken = 0
 	
 	DamageNumbers.display_number(damage_taken, global_position, is_crit)
 	
 	stats.health -= damage
+	
 	update_health_bar()
 	die()
 
@@ -43,10 +50,17 @@ func die() -> void:
 	if stats.health > 0:
 		return
 	
-	if stats.drop:
-		SignalBus.item_dropped.emit(stats.drop, global_position)
-	
 	queue_free()
+	
+	if not stats.drop:
+		return
+	
+	var drop_rng = randf_range(0, 100)
+	var will_drop_item = drop_rng <= stats.drop_chance
+	
+	if will_drop_item:
+		SignalBus.item_dropped.emit(stats.drop, global_position)
+
 
 
 func applies_attack() -> void:
@@ -98,7 +112,11 @@ func _on_chase_radius_body_exited(body: Node2D) -> void:
 		target_on_chase_radius.emit()
 
 
-func toggle_attack_box(disable := false) -> void:
+func toggle_is_attacks_on_cooldown(is_on_cooldown := false):
+	is_attacks_on_cooldown = is_on_cooldown
+
+
+func disable_attack_box(disable := false) -> void:
 	if disable:
 		attack_box.collision_mask = 0
 		return

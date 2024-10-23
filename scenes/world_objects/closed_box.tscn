@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://6jffv6iitcev"]
 
-[ext_resource type="Texture2D" uid="uid://dwrrpioghbotc" path="res://sprites/world_objects/ClosedBox.png" id="1_ffmp6"]
+[ext_resource type="Texture2D" uid="uid://b7e6m35egnely" path="res://sprites/world_objects/ClosedBox72.png" id="1_bphfy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5asd8"]
 size = Vector2(63, 35)
@@ -8,10 +8,12 @@ size = Vector2(63, 35)
 [node name="ClosedBox" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ffmp6")
+position = Vector2(0, -18)
+texture = ExtResource("1_bphfy")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -18)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-0.5, 0.5)
+position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_5asd8")

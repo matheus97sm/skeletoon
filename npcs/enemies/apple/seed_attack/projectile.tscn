@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvg4urlehorwn"]
+
+[ext_resource type="Script" path="res://npcs/enemies/apple/seed_attack/projectile.gd" id="1_k0jhp"]
+[ext_resource type="Texture2D" uid="uid://cft1thjoilrwb" path="res://sprites/enemies/attacks/apple_seed/AppleSeed.png" id="2_1twcq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rvoa5"]
+radius = 7.0
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_k0jhp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 0)
+shape = SubResource("CircleShape2D_rvoa5")
+
+[node name="AppleSeed" type="Sprite2D" parent="."]
+position = Vector2(6, 0)
+texture = ExtResource("2_1twcq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

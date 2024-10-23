@@ -11,11 +11,17 @@ var inventory: Inventory = Inventory.new()
 var gold: int = 0
 var gravity = 1400
 var player_utils = PlayerUtils.new()
+var is_player_invunerable: bool = false
+var player_direction: int = 1
 
 
 func _ready() -> void:
 	await owner.ready
 	update_player_stats()
+	
+	player_stats = player_base_stats
+	
+#	Player Updates
 	SignalBus.health_updated.emit(player_stats.health, player_stats.max_health)
 	
 #	Player Actions
@@ -35,6 +41,7 @@ func update_player_stats():
 	var new_player_stats = player_utils.calculate_player_stats(player_base_stats, player_stats.health, equipments)
 	player_stats = new_player_stats
 	SignalBus.stats_updated.emit(player_stats)
+	SignalBus.health_updated.emit(player_stats.health, player_stats.max_health)
 
 
 func update_player_health(new_health: float, max_health: float = player_stats.max_health):
@@ -74,6 +81,9 @@ func inflict_damage_to_enemy(enemy: CharacterBody2D):
 
 
 func take_damage(damage: float):
+	if is_player_invunerable:
+		return
+	
 	var damage_taken = damage - player_stats.deffence
 	
 	if damage_taken <= 0:

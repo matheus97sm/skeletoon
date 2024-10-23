@@ -6,6 +6,7 @@ const WALKING = "walking"
 const ATTACK = "attack"
 const JUMPING = "jumping"
 const FALLING = "falling"
+const DASHING = "dashing"
 
 var player: Player
 var player_utils = PlayerUtils.new()

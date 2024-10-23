@@ -9,6 +9,10 @@ func enter():
 
 
 func update(delta: float):
+	if not player.is_on_floor():
+		state_transition.emit(FALLING)
+		return
+		
 	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 		state_transition.emit(WALKING)
 		return
@@ -19,4 +23,8 @@ func update(delta: float):
 	
 	if Input.is_action_just_pressed("jump"):
 		state_transition.emit(JUMPING)
+		return
+	
+	if Input.is_action_just_pressed("dash"):
+		state_transition.emit(DASHING)
 		return

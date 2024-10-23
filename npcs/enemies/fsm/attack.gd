@@ -1,14 +1,15 @@
 extends EnemyState
 
 var target: CharacterBody2D
-var direction: int = 1
-var is_on_cooldown: bool = false
+var target_direction: Vector2
 var can_attack: bool = false
+var choosed_attack: Node
 
-@export var tackle_duration: float = 0.5
+signal finished_attack
+
 
 func enter() -> void:
-	if is_on_cooldown:
+	if enemy.is_attacks_on_cooldown:
 		state_transition.emit(CHASE)
 		return
 	
@@ -16,43 +17,52 @@ func enter() -> void:
 		state_transition.emit(IDLE)
 		return
 	
+	var is_enemy_on_melee_range = abs(enemy.chase_target.global_position.x - enemy.global_position.x) < 200
+	var attack_type = 'melee' if is_enemy_on_melee_range else 'range'
+	var attacks = get_possible_attacks(attack_type)
+	
+	if attacks.size() == 0:
+		state_transition.emit(CHASE)
+		return
+	
+	choosed_attack = attacks.pick_random()
+	
 	can_attack = true
 	
 	target = enemy.chase_target
+	target_direction = target.global_position
 	
-	var enemy_is_on_left = target.global_position.x < enemy.global_position.x
+	if choosed_attack:
+		choosed_attack.handle_attack(finished_attack, target_direction)
 	
-	direction = 1
-	if enemy_is_on_left:
-		direction = -1
-	
-	get_tree().create_timer(tackle_duration).connect("timeout", end_attack)
+	finished_attack.connect(end_attack)
 	get_tree().create_timer(enemy.attack_cooldown).connect("timeout", end_cooldown)
-	is_on_cooldown = true
-
-
-func update(delta: float) -> void:
-	handle_tackle(delta)
+	enemy.toggle_is_attacks_on_cooldown(true)
 
 
 func exit() -> void:
 	can_attack = false
 
 
-func handle_tackle(delta: float) -> void:
-	if not can_attack: 
-		state_transition.emit(CHASE)
-		return
+func get_possible_attacks(attack_type: String = 'all') -> Array[Node]:
+	var attacks: Array[Node] = get_children()
 	
-	enemy.toggle_attack_box()
-	enemy.velocity.x = enemy.stats.speed * 2.5 * direction
-	enemy.move_and_slide()
-
+	if attack_type == 'all':
+		return attacks
+	
+	var filtered_attacks: Array[Node] = []
+	
+	for attack in attacks:
+		if attack.attack_type == attack_type:
+			filtered_attacks.append(attack)
+	
+	return filtered_attacks
 
 func end_attack() -> void:
 	can_attack = false
-	enemy.toggle_attack_box(true)
+	enemy.disable_attack_box(true)
+	state_transition.emit(CHASE)
 
 
 func end_cooldown() -> void:
-	is_on_cooldown = false
+	enemy.toggle_is_attacks_on_cooldown(false)
